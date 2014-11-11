@@ -4,19 +4,80 @@ Therefore we must verify whether $f \in C^2(R)$ or $f \in C^3(R)$.
 
 \begin{gather*}
 f' (x) = \begin{cases}
-1 ~ x \in (-\infty,1] \\
-2-x ~ x \in [1,2] \\
-0 ~ x\in [2,\infty)
+1 \quad\quad\quad x \in (-\infty,1] \\
+2-x \quad\quad\quad x \in [1,2] \\
+0 \quad\quad\quad x\in [2,\infty)
 \end{cases},
 f''(x) =\begin{cases}
-0 ~ x \in (-\infty,1] \\
--1 ~ x \in [1,2] \\
-0 ~ x\in [2,\infty) \\
+0 \quad\quad\quad x \in (-\infty,1] \\
+-1 \quad\quad\quad x \in [1,2] \\
+0 \quad\quad\quad x\in [2,\infty) \\
 \end{cases}
 \end{gather*}
 Now we use the limits between two of the spline cases to calculate whether the functions are quadratic and so on.
 \begin{gather*}
-\lim_{x to 1^{-}} f(x) = 1 =  \lim_{x to 1^{+}} f(x) , \lim_{x \to 2^{-}} f(x) = \frac{3}{2} = \lim_{x \to 2^{+}}
+\lim_{x \to 1^{-}} f(x) = 1 =  \lim_{x \to 1^{+}} f(x) , \lim_{x \to 2^{-}} f(x) = \frac{3}{2} = \lim_{x \to 2^{+}} f(x)
 \end{gather*}
+hence $f \in C^1(R)$
+\begin{gather*}
+\lim_{x \to 1^{-}} f'(x) = 1 =  \lim_{x \to 1^{+}} f'(x) , \lim_{x \to 2^{-}} f'(x) = 0 = \lim_{x \to 2^{+}} f'(x)
+\end{gather*}
+hence $f \in C^2(R)$.
+\begin{gather*}
+\lim_{x \to 1^{-}} f''(x) = 0, \lim_{x \to 1^{+}} f''(x) = -1 , \lim_{x \to 2^{-}} f''(x) = -1 , \lim_{x \to 2^{+}} f''(x) =0
+\end{gather*}
+Hence $f \not \in C^3(R)$, so we can see that $f$ is a quadratic, but not a cubic spline.
 \section{Exercise 7}
+As already seen in paragraph $6$, it is not a cubic spline.
 \section{Exercise 8}
+
+The given functions and its derivatives are:
+\begin{gather*}
+f(x) = \begin{cases}
+a(x-2)^2 + b(x-1) ^3 \quad\quad x \in (-\infty,1]\\
+c(x-2)^2 \quad\quad x\in [1,3]\\
+d(x-2)^2 + e(x-3)^3 \quad \quad x \in [3,\infty)
+\end{cases}\\
+f(x)' =\begin{cases}
+2a(x-2) + 3b(x-1)^2 \quad \quad x \in (-\infty,1]\\
+2c \quad\quad x\in [1,3]\\
+2d(x-2) + 3e(x-3)^2 \quad \quad x \in [3,\infty)
+\end{cases}\\
+f(x)''=\begin{cases}
+2a + 6b(x-1) \quad \quad x \in (-\infty,1]\\
+2c \quad\quad x\in [1,3]\\
+2d + 6e(x-3) \quad \quad x \in [3,\infty)
+\end{cases}
+\end{gather*}
+To determinate the spline we first use the knot conditions:
+\begin{gather*}
+S_{i-1}(t_i) = S_{i}(t_i) \\
+S_0(1) =  = S_1(1) =\\
+a(x-2)^2 = c(x-2)^2\\
+= a = c
+\end{gather*}
+Moreover we get:
+\begin{gather*}
+S_1(3) = S_2(3) \\
+= -c = -d \\
+c = d \Rightarrow a = c = d
+\end{gather*}
+Interestingly, we didn't use the derivatives as conditions, since they actually give us exactly the same results for the knots.
+$f(x)$ is a cubic spline, if and only if $a = c = d$, the parameters $b,e$ are arbitrary chosen.
+Now we calculate the parameters, using $f(0) = 26$ in equation $S_0$:
+\begin{gather*}
+4a - b = 26\\
+\end{gather*}
+Using $f(1) = 7$ in $S_0$:
+\begin{gather*}
+a+0  = 7 \Rightarrow a = 7 = c = d \Rightarrow b = 4a -26 = 2
+\end{gather*}
+Lastly using $f(4) = 25$, in $S_2$.
+\begin{gather*}
+4d + e = 25\\
+28 + e = 25\\
+e= -3 
+\end{gather*}
+So our result is : $a = c =d = 7$, $b =2$, $e = -3$.
+
+
