@@ -1,0 +1,193 @@
+
+\section{Exercise 1}\
+Let
+\begin{gather*}
+H = I - 2 uu^* \\
+|| u || = 1 \\
+Hx = - \alpha e_1 \\
+Hx = x- 2( u^*x)u = -\alpha e_1
+\end{gather*}
+Since $H$ is an orthonormal matrix:
+\begin{gather*}
+||x|| = || Hx|| = |\alpha| \\
+\alpha = \pm ||x||\\
+x^Hx = ||x||2 -2(u^*x)^2 = - \alpha e_1^T x\\
+\end{gather*}
+So we can get:
+\begin{gather*}
+u^*x = \sqrt{||x||^2 \pm ||x|| e_1^* x}
+\end{gather*}
+And set $\alpha = \text{sgn}(e_1^*x) ||x||$.
+Thus:
+\begin{gather*}
+u^*x = \sqrt{\frac{1}{2} ||x||(||x|| + ||x_1||}\\
+u = \frac{x+\alpha e_1}{2(u^* x)}
+\end{gather*}
+This method is better for constructing householder matrices because we dont have any special case for complex numbers since the inner product is real.
+
+\section{Exercise 9}
+We simply want to minimize our given formula for this exercise. 
+The task is to maximize $t$ for $f(t) = || u - tx||_2$.
+\begin{gather*}
+\frac{\partial}{\partial x_k} \|\mathbf{x}\|_2 = \frac{x_k}{\|\mathbf{x}\|_2}\\
+||u-tx||^2 \frac{\partial}{\partial t} = -2x || u -tx || Norm^{'}(u-tx) = \\
+- 2x || u -tx || \frac{u-tx}{|| u-tx ||} = -2x( u-tx) \\
+\end{gather*}
+Searching for a minimum:
+\begin{gather*}
+-2x( u-tx) = 0 \Rightarrow t = u x^{*}
+\end{gather*}
+Now we need to verify that this is a minimum.
+\begin{gather*}
+f^{''}(t) = \frac{\partial}{\partial t} -2x( u-tx) = 2x^2 \Rightarrow 2x^2 > 0 \Rightarrow \text{ Minimum }
+\end{gather*}
+As we can see since the second derivative is always $>0$, we found a minimum for $f(t)$ at $u x^{*}$.
+\section{Exercise 16}
+We need to find the QR of $\left( \begin{array}{cc}
+0 & -4\\
+0 & 0 \\
+-5 & -2 \\
+\end{array} \right)$.
+We recall the algorithm:
+\begin{gather*}
+ \alpha = - \mathrm{e}^{\mathrm{i} \arg x_k} \|\mathbf{x}\| \\
+ \mathbf{u} = \mathbf{x} - \alpha\mathbf{e}_1 \\
+ e_1 = \left(1 , \ldots \right)\\
+ \mathbf{v} = {\mathbf{u}\over\|\mathbf{u}\|}\\
+ Q = I - 2 \mathbf{v}\mathbf{v}^T
+\end{gather*}
+%Fuck yourself hard in the ass
+\begin{gather*}
+a_1 = \left( \begin{array}{cc}
+0 \\
+0\\
+-5
+\end{array} \right), 
+||a_1|| e_1 = \left( \begin{array}{cc}
+5 \\
+0\\
+0
+\end{array} \right),
+\alpha = -5 \\
+u = \left( \begin{array}{cc}
+0 \\
+0\\
+-5
+\end{array} \right) +
+(-5) 
+\left( \begin{array}{cc}
+1 \\
+0\\
+0
+\end{array} \right) = 
+\left( \begin{array}{cc}
+-5 \\
+0\\
+-5
+\end{array} \right)\\
+v = \frac{u}{||u||} = \frac{1}{\sqrt{2}}\left( \begin{array}{cc}
+1 \\
+0\\
+1
+\end{array} \right),
+H = I - 2 v^*v = \left( \begin{array}{ccc}
+1 & 0 & 0 \\
+0& 1 & 0\\
+0 & 0 & 1
+\end{array} \right) - 
+\frac{2}{\sqrt{2}\sqrt{2}}
+\left( \begin{array}{ccc}
+1 & 0 & 1 \\
+0& 0 & 0\\
+1&0&1
+\end{array} \right)\\
+H = Q_1 = \left( \begin{array}{ccc}
+0 & 0 & -1 \\
+0 & 1 & 0\\
+-1 & 0 & 0
+\end{array} \right) \\
+Q_1 A = \left( \begin{array}{cc}
+5&2\\
+0&0\\
+0&4
+\end{array} \right),
+\end{gather*}
+Now we do the second iteration:
+\begin{gather*}
+a_2 =\left( \begin{array}{c}
+0 \\ 
+4
+\end{array} \right),
+\alpha = -4 , 
+u = \left( \begin{array}{c}
+-4 \\ 
+4
+\end{array} \right)\\
+v = \frac{1}{\sqrt{2}}\left( \begin{array}{c}
+-1 \\ 
+1
+\end{array} \right), Q_2 = \left( \begin{array}{ccc}
+1 & 0 & 0 \\ 
+0 & 0 & 1\\
+0 & 1 & 0
+\end{array} \right)
+\end{gather*}
+So we can compute Q and R :
+
+\begin{gather*}
+Q = Q_1^*Q_2^* = \left( \begin{array}{ccc}
+0 & 1 & 0 \\ 
+0 & 0 &1 \\
+1 & 0 & 0
+\end{array} \right),
+R = Q^*A = \left( \begin{array}{ccc}
+-5 & 2 \\
+0 & -4\\
+0 & 0
+\end{array} \right)
+\end{gather*}
+
+\section{Exercise 17}
+We need to proof that $|| x||_2 = ||Qx||_2 $ and $ \langle x, y \rangle = \langle Qx, Qy \rangle$.
+We can proof the inner product:
+\begin{gather*}
+\langle Qx,Qy \rangle = (Qx)^*Qy \\
+= x^* Q^* Q y \\
+= x^* y \\
+= \langle x,y \rangle
+\end{gather*}
+Which means that $Q$ preserves the length of the vectors.
+\begin{gather*}
+||Qx||_2^2 = (Qx)^* Qx \\
+= x^*Q^* Q x\\
+= x^*x\\
+= || x||_2^2 \\
+\Rightarrow ||Qx||_2 = ||x||_2 
+\end{gather*}
+\section{Exercise 19}
+%Bullshit here
+We can compute the derivative of the following function, to show that $F(x) = ||Ax - b||_2^2 + \alpha ||x||_2^2$ minimizes $(A^TA + \alpha I)x = A^Tb$.
+\begin{gather*}
+\lim_{h \to 0} \dfrac{F(x+h) - F(x)}{h} \\
+\lim_{h \to 0} \dfrac{F(x) + (Ah)^T Ah + \alpha h^Th - F(x)}{h}\\
+\lim_{h \to 0} \dfrac{(Ah)^T Ah + \alpha h^Th}{h}\\
+\lim_{h \to 0} \dfrac{||Ah||_2^2 + \alpha ||h||_2^2}{h}
+\end{gather*}
+Since the limit goes to zero, we can see that the function above minimizes $(A^TA + \alpha I)x = A^Tb, \forall x$.
+\section{Exercise 33}
+From the matrices we can write out the equation system
+\begin{gather*}
+3x + 2y = 3 \\
+2x + 3y = 0\\
+x+ 2y = 0
+\end{gather*}
+We define a function $S(x,y)$ which is out least squares function.
+\begin{gather*}
+S(x,y) = \left( 3 - \left( 3x + 2y \right) \right)^2 + \left( 0- \left( 2x+3y \right) \right)^2 + \left( 1 - \left( x + 2y \right) \right)^2 = 
+14 x^2 + 17 y^2 + 28xy -20x -16y + 10 \\
+\frac{\partial S}{\partial x} = 28x + 28y -20 = 0 = S_1 \\
+\frac{\partial S}{\partial y} = 34y + 28x -16 = 0 = S_2\\
+S_2 - S_1 = 6y +4 =0\\
+y = -\frac{2}{3},\\
+x = \frac{29}{21}
+\end{gather*}

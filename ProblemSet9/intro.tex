@@ -1,0 +1,86 @@
+\section{Exercise 1}
+We use here the standard lagrange formula to calculate the polynomial.
+\paragraph{a}
+\begin{gather*}
+p(x) = y_0 \left( \dfrac{x- x_1}{x_0 - x_1} \right) + y_1 \left( \dfrac{x - x_0}{x_1 -x_0} \right)\\
+p(x) = 7 \left( \dfrac{x- 3}{3 - 7} \right) + (-1) \left( \dfrac{x - 7}{7 - 3} \right)\\
+= -\frac{7}{4}x + \frac{3}{4} - \frac{1}{4} x + \frac{7}{4} = -2x + \frac{5}{2}
+\end{gather*}
+\paragraph{b}
+The 3 data points formula for the Lagrange interpolation is the following:
+\begin{gather*}
+p(x) = y_0 \left( \frac{x - x_1 }{x_0 - x_1} \right) \left( \frac{x -x_2}{x_1 - x_2} \right) + y_1 \left( \frac{x-x_0}{x_1-x_0} \right) \left( \frac{x-x_2}{x_1-x_2} \right) + y_2 \left( \frac{x-x_0}{x_2 - x_0} \right) \left( \frac{x -x_1}{x_2 -x_1} \right)
+\end{gather*}
+We plug in the numbers and get:
+\begin{gather*}
+p(x) = 146 \left(\dfrac{x-1}{7-1} \right) \left( \dfrac{x-2}{1-2} \right) + 2 \left( \dfrac{x-7}{1-7} \right) \left( \dfrac{x-2}{1-2} \right) + \left( \dfrac{x-7}{2-7} \right) \left( \dfrac{x-1}{2-1} \right)
+\end{gather*}
+Which leads to the expanded polynomial:
+\begin{gather*}
+p(x) = \frac{1}{3} (2-x)(7-x) + \frac{1}{5}(x-1) (7-x) + \frac{73}{3} (2-x) (x-1)
+\end{gather*}
+\section{Exercise 6}
+Assume having a polynominal $q$, which can be written as a sum of two polynomials, namely from $i < k, k<n$:
+\begin{gather*}
+q = q_1 + q_2 \\
+q_1 = \sum_{i=0}^k q_1(x_i) l_{x_i} \\
+q_2 = \sum_{i=k+1}^n q_2(x_i) l_{x_i} \\
+\end{gather*}
+Using the linearity property from exercise 2, we can rewrite:
+\begin{gather*}
+Lq = L(q_1 + q_2) = L q_1 + L q_2 = \sum_{i=0}^k q_1(x_i) l_{x_i} + \sum_{i=k+1}^n q_2(x_i) l_{x_i} = q_1 + q_2 = q\\
+\end{gather*}
+So we can see that $Lq = q$.
+\section{Exercise 7}
+We need to show that:
+\begin{gather*}
+\sum_{i = 0}^n l_i(x) = 1
+\end{gather*}
+We can easily proof that by rewriting:
+\begin{gather*}
+\sum_{i = 0}^n = l_i(x) = \sum_{i = 0}^n l_i(x_i) = \prod_{m \neq i} \frac{x_i - x_m}{x_i - x_m } = 1
+\end{gather*}
+As required.
+\section{Exercise 9}
+Let $F(x) = g(x) + \frac{x_0 -x}{x_n - x_0} [ g(x)  - h(x) ] $.We know that $g(x_0) = f(x_0) , h(x_n ) = f(x_n)$ and $g(x_i) = h(x_i) = f(x_i)$ for $ 1 \leq i \leq n-1$.
+Hence:
+\begin{gather*}
+F(x_0) = g(x_0) + \frac{x_0 -x_0}{x_n - x_0} [ g(x_0) - h(x_0)] = g(x_0) + \frac{0}{x_n - x_0}[g(x_0) - h(x_0)] = g(x_0) = h(x_0)\\
+F(x_i) =  g(x_i) + \frac{x_0 -x_i}{x_n - x_0} [ g(x_i) - h(x_i)] = g(x_i) + \frac{x_0 - x_i}{x_n - x_0}[0] = g(x_i) = h(x_i) ~ 1 \leq i \leq n-1 \\
+F(x_n) = g(x_n) + \frac{x_0 -x_n}{x_n - x_0} [ g(x_n) - h(x_n)] = g(x_n) - [ g(x_n) - h(x_n) ] = h(x_n) = f(x_n)
+\end{gather*}
+\section{Exercise 10}
+We simply expand:
+\begin{gather*}
+p(x) = \sum_{i=0}^k y_k l_i(x) = \sum_{i=0}^k y_k \prod_{j \neq i} \frac{x-x_j}{x_j - x_m} \\
+= \sum_{i=0}^k y_k \prod_{j \neq i} (x-x_j) \prod_{j \neq i} (x_j - x_m)^{-1} = \\
+\sum_{i=0}^k y_k \prod_{j \neq i} (x_j - x_m)^{-1} \prod_{j \neq i} (x-x_j) =\\
+c \prod_{j \neq i} (x-x_j),~ c = \sum_{i=0}^k y_k \prod_{j \neq i} (x_j - x_m)^{-1}
+\end{gather*}
+We have shown that the factor before the polynomial $x^n$ is $c$.
+\section{Exercise 11}
+%TODO
+We need to proof that any polynomial $q$ of degree $\leq n-1$ 
+\begin{gather*}
+\sum_{i=0}^n q(x_i) \prod_{j \neq i}^n (x_i - x_j )^{-1} = 0
+\end{gather*}
+We can see that we have $n-1$ degrees, but $n+1$ equations:
+\begin{gather*}
+\sum_{i=0}^n q(x_i) \prod_{j \neq i}^n (x_i - x_j )^{-1} = q(x) \prod_{x_j \neq X}^n (x-x_j)^{-1}  
+\end{gather*}
+So we can follow that we will end in a zero termed solution.
+\section{Exercise 21}
+We need to calculate the interpolated polynomial via Lagrange and newton.\\
+Lagrange:
+\begin{gather*}
+p(x) = 11 \left(\dfrac{x}{2-0} \right) \left( \dfrac{x-3}{0-3}\right) + 7 \left( \dfrac{x-2}{0-2} \right) \left( \dfrac{x-3}{0-3} \right) + 28 \left( \dfrac{x-2}{3-2} \right) \left( \dfrac{x-0}{3-0} \right) = \\
+5x^2 - 8x + 7 
+\end{gather*}
+Newton:
+\begin{gather*}
+a_0 = y_0 = 11\\
+a_1 = f(x_0,x_1) = \frac{f(x_1) - f(x_0)}{x_1 -x_0} = 2\\
+f(x_1,x_2) = \frac{f(x_2) - f(x_1)}{x_2 -x_1} = 7\\
+a_2 = f(x_0,x_1,x_2) = \frac{f(x_1,x_2)-f(x_0,x_1)}{x_2 - x_0} = 5\\
+p(x) = 11 + 2(x-2) + 5( x-2)(x-0) = 5x^2 -8x + 7 
+\end{gather*}

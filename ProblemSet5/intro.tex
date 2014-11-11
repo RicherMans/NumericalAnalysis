@@ -1,0 +1,219 @@
+\section{Exercise 2}
+We want to know if a polynomial $p$ of degree $m$ has a solution space of equal dimension $m$.
+\begin{gather*}
+p(E)x = 0 \\
+p(E) = \sum\limits_i^m c_i E^i = c_0 + c_1 E + c_2 E^2 + \ldots +c_m E^m
+\end{gather*} 
+From the definition we get:
+\begin{gather*}
+p(E)u = \sum\limits_i^m c_i (E^i u) = \sum\limits_i^m c_i \lambda^i u = p(\lambda)u = 0
+\end{gather*}
+We can see from that definition, that if $Eu = \lambda u$, the resulting solution space spanned by $u$ will be of dimension $m$.
+It is sufficient to show that $Eu = \lambda u$, or differently that an eigenvalue in $E$ exists.
+\begin{gather*}
+p_E(t) = \det(tI -A) \\
+= (tI - E) =  \left( \begin{array}{ccccc}
+(t-1)&1 & 0 &0 &0 \\
+& (t-1) &1 &0 &0 \\
+& & \ddots & \ddots &0 \\
+& & & (t-1) & 1 \\
+& & & & (t-1) \\
+\end{array} \right) \\
+t_1 = 1
+\end{gather*}
+As we can see, there exists the eigenvalue $\lambda_1 = t_1 = 1$ with multiplicity $m$, so that $Eu = \lambda u$, where $u = x$ holds.
+\section{Exercise 3}
+Let $p$ be a polynomial of degree $m$ with $p(0) \neq 0$. If a sequence $x$ contains $m$ consecutive zeros and $p(E)x = 0$, then $x = 0$.
+We can rewrite this statement as $\sum\limits_{i = 0} ^m  c_i \lambda^i x = 0$. To make sense in this expression $x$ must have dimension $m$, since otherwise the equal statement $\sum\limits_{i = 0} ^m  c_i E^i x = 0$ would not make sense. Therefore if $x$ needs to have $m$ consecutive zeros and has dimension $m$, it must be zero $x = 0$.
+\section{Exercise 5}
+We define the operator $E$ as:
+\begin{gather*}
+E^0 = I \\
+E^1 = \left( \begin{array}{ccccc}
+0&1 & 0 &0 &0 \\
+& 0 &1 &0 &0 \\
+& & \ddots & \ddots &0 \\
+& & & 0 & 1 \\
+& & & & 0 \\
+\end{array} \right)
+\end{gather*}
+We calculate the eigenvalues:
+\begin{gather*}
+\det ( \lambda I - E ) x = 0\\
+= \left( \begin{array}{ccccc}
+(\lambda -1)&-1 & 0 &0 &0 \\
+& (\lambda -1) & -1 &0 &0 \\
+& & \ddots & \ddots &0 \\
+& & & (\lambda -1) & -1 \\
+& & & & (\lambda -1) \\
+\end{array} \right) \\
+(\lambda -1) ^n = 0 \rightarrow \lambda = 0
+\end{gather*}
+So what is left over to calculate the eigenvectors is the negative matrix $E$.
+\begin{gather*}
+v = \left( \begin{array}{c}
+v_1\\
+v_2\\ 
+\vdots \\
+v_n\\
+\end{array} \right)
+-E v = 0\\
+(-E)v = \left( \begin{array}{c}
+-v_2 \\
+-v_3\\
+\vdots \\
+-v_n \\
+0
+\end{array}\right)
+\end{gather*}
+So the eigenvectors are the negative of the applied vectors of $E$.
+\section{Exercise 11}
+\paragraph{a}
+Give bases consisting of real sequences for the solution space.
+\begin{gather*}
+p(E) = (4E^0 - 3E^2 + E^3)x =0 \\
+p(\lambda) = 4 - 3 \lambda^2 + \lambda^3 \\
+p(\lambda) = (\lambda +1) ( \lambda -2 )^2\\
+\lambda_1 = -1 , \lambda_2 = 2
+\end{gather*}
+The solution space spanned by $u_1 = ( \lambda_1 ,\lambda_1^2 ,\lambda_1^3, \ldots )$ and $u_2 =( \lambda_2 ,\lambda_2^2 ,\lambda_2^3, \ldots ) $.
+Since we find multiple zeros, we need to check if there are more. Indeed we can find one by using the derivation:
+\begin{gather*}
+u_3 = \lambda_2^{'} = ( 1,2\lambda_2,3\lambda_2, \ldots)
+\end{gather*}
+If the determinate is independent, this means that the solution also is.
+\begin{gather*}
+\det \left( \begin{array}{ccc}
+\lambda_1 & \lambda_2 & 1\\
+\lambda_1^2 & \lambda_2^2 & 2 \lambda_2 \\
+\lambda_1^3 & \lambda_2^3 & 3 \lambda_2 ^2\\
+\end{array}\right) 
+\det \left( \begin{array}{ccc}
+-1 & 2 & 1\\
+1 & 4 & 4 \\
+-1 & 6 & 12 \\
+\end{array}\right)= -46
+\end{gather*}
+The third solution $u_3$ follows from:
+\begin{gather*}
+p(E)u_3 = p(\lambda_2) u_3^{'} + p^{'}(\lambda_2) u_2 = 0 
+\end{gather*}
+The basis for the solution space is then $\left\lbrace u_1,u_2,u_3 \right\rbrace$.
+\paragraph{b}
+Give bases consisting of real sequences for the solution space.
+\begin{gather*}
+p(E) = (3E^0 - 2E^2 + E^3)x =0 \\
+p(\lambda) = 3 - 2 \lambda^2 + \lambda^3 \\
+p(\lambda) = (\lambda + 1)(\lambda^2 - 3 \lambda +3 ) = 0\\
+\lambda_1  = -1
+\end{gather*}
+Since the second term is always $>0$, we cannot use it to calculate the eigenvalues. So we get as eigenvalues $\lambda_1 = -1$
+\section{Exercise 14}
+We define an operator $\bigtriangleup$, which is:
+\begin{equation*}
+\bigtriangleup x = (x_2-x_1 ,x_3-x_2 , x_4-x_3 , \ldots)
+\end{equation*}
+Let $E = I + \bigtriangleup$.
+\begin{gather*}
+(I+ \bigtriangleup)x = x + \bigtriangleup x = ( x_1 ,x_2 ,x_3 , \ldots ) + (x_2-x_1 ,x_3 -x_2,x_4-x_3 ,\ldots ) =  (x_2 ,x_3 ,\ldots) = Ex
+\end{gather*}
+Let $\pi_n : R^\infty \to R^\infty $ be the projection onto the first $n$ coordinated defined by :
+\begin{gather*}
+\pi_n (x_1,x_2,x_3 , \ldots) = (x_1,x_2,x_n, 0 ,0, \ldots)
+\end{gather*}
+Suppose $K : R^{\infty} \to R^{\infty} $ and $L : R^{\infty} \to R^{\infty}$ are linear operators such that $Kx_i = Lx_i$ for every $i \in R$ where $x_i = (\lambda,\lambda^2 , \ldots)$.If there exists $r \in N$ such that $\pi_n K x = \pi_n K \pi_{n+r}x$ and $\pi_n L x = \pi_n L \pi_{n+r} x$ holds for every $x \in R^{\infty}$ and $n \in N$, then $K=L$.
+
+To show that we define $u_i = \pi_{n+r}x \lambda_i$ where $\lambda_i = i, i = 1,2, \ldots n+r$.
+\begin{gather*}
+M = \left( \begin{array}{ccc}
+u_{1,1} &\hdots & u_{n+r,1}\\
+\vdots & \ddots & \vdots \\
+u_{1,n+r}& \hdots & u_{n+r,n+r}
+\end{array} \right)=
+\left( \begin{array}{cccc}
+1 & 2 & \hdots & n+r \\
+1^2&2^2 & \hdots & (n+r)^2 \\
+\vdots& \vdots & \ddots & \vdots\\
+1^{n+r} & 2^{n+r} & \hdots & (n+r)^{n+r}\\
+\end{array} \right)
+\end{gather*}
+The matrix $M$ is therefore non -singular. Now given any $x \in R^{\infty}$ there is a unique $\beta \in R^{n+r}$ such that $\pi_{n+r} x = \beta_1 u_1 + \beta_2 u_2 + \ldots + \beta_{n+r} u_{n+r}$. Let $z = \beta_1 x_{\lambda_1} + \beta_2 x_{\lambda_2} + \ldots + \beta_{n+r} x_{\lambda_{n+r}}$.
+It follows that:
+\begin{equation*}
+\pi_{n+r} x = \pi_{n+r}z
+\end{equation*}
+Moreover:
+\begin{gather*}
+\pi_n K u_i = \pi_n K \pi_{n+r}x_{\lambda_i} = \pi_n K x_{\lambda_i} = \pi_n L x_{\lambda_i} = \pi_n L \pi_{n+r} x_{\lambda_i} = \pi_n L u_i \\
+\pi_n K x = \pi_n K \pi_{n+r} x = \pi_n K \pi_{n+r} z \\
+= \beta_1 K u_1 + \beta_2 K u_2 + \ldots + \beta_{n+r} K u_{n+r} = \beta_1 L u_1 + \beta_2 L u_2 + \ldots + \beta_{n+r} L u_{n+r} = \pi_n L x
+\end{gather*}
+Since $\pi_n K x = \pi_n L x$ it follows that $\pi_n K = \pi_n L$. So $K = L$.
+
+Let 
+\begin{gather*}
+K = p(E) = \sum\limits_{i =0}^m c_i E^i \\
+L = p(I) + p^{'}(I)\bigtriangleup + \frac{1}{2} p^{''}(I) \bigtriangleup^2 
+\end{gather*}
+From what on we proved we can follow that :
+\begin{gather*}
+\pi_n K x = \pi_n K \pi_{n+m} x \\
+pi_n L x = \pi_n L \pi_{n+m} x \\
+\end{gather*}
+We note that $E x_{\lambda} = \lambda x_{\lambda}$.
+\begin{gather*}
+\bigtriangleup x_{\lambda} = (E-I)x_{\lambda} = \lambda x_{\lambda} - x_{\lambda} = (\lambda -1 ) x_{\lambda}
+\end{gather*}
+Since the eigenvalues are one, Taylor series expansion gives us:
+\begin{gather*}
+p(\lambda) = \sum\limits_{i}^m c_i \lambda^i = p(1) + p^{'}(1)(\lambda-1) + \frac{1}{2!} p^{''} (1)(\lambda-1)^2 + \ldots + \frac{1}{m!} (1) (\lambda -1)^m\\
+L x_{\lambda} =  p(1) x_{\lambda} + p^{'}(1)(\lambda-1) x_{\lambda} + \frac{1}{2!} p^{''} (1)(\lambda-1)^2 x_{\lambda} + \ldots + \frac{1}{m!} (1) (\lambda -1)^m x_{\lambda} \\
+= x_{\lambda} \left( p(1) + p^{'}(1)(\lambda-1) + \frac{1}{2!} p^{''} (1)(\lambda-1)^2 + \ldots + \frac{1}{m!} (1) (\lambda -1)^m \right) = p(\lambda)x_{\lambda} = p(E)x_{\lambda} = K x_{\lambda}
+\end{gather*}
+As it can be seen, it is analogous in its matrix form, by using $\lambda = E$, $ 1 = I $, so that the Taylor terms can be expressed as :
+\begin{equation*}
+1-\lambda = I - E = \bigtriangleup
+\end{equation*}
+Therefore we can satisfy our hypothesis with $r = m$. The result $K=L$ follows.
+%Just copy paste here wtf
+\section{Exercise 15}
+We need to prove that if $x = ( \lambda,\lambda^2 ,\lambda^3 ,\ldots ) $ and $p$ is a polynomial, then $p(\bigtriangleup)x= p(\lambda-1)x$.
+We use induction to prove that :
+\begin{gather*}
+p(\bigtriangleup) x_{\lambda} = p(\lambda -1 ) x_{\lambda}
+\end{gather*}
+Let $p_0 \in P_0$. Then $p_0(\mu) = c$ for some $c \in C$. Therefore
+\begin{equation*}
+p_0 ( \bigtriangleup ) x_{\lambda} =  c x_{\lambda} = p_0 (\lambda -1 ) x_{\lambda}
+\end{equation*}
+We begin the induction by supposing that $p_n ( \bigtriangleup ) x_n = p_n(\lambda -1 ) x_{\lambda}$ for every $p_n \in P_n$. Let $p_{n+1} \in P_{n+1}$. We can write $p_{n+1}(\mu) = \mu p_n(\mu) + c$ for some $p_n \in P_n$ and $c \in C$. To complete the induction we need to show that $p_{n+1}(\bigtriangleup) x_{\lambda} = p_{n+1} (\lambda -1 ) x_{\lambda}$. The hypothesis gives us $p_n(\bigtriangleup) x_{\lambda} $ = $p_n (\lambda -1 )x_{\lambda}$.
+\begin{gather*}
+p_{n+1} ( \bigtriangleup ) x_{\lambda} = (\bigtriangleup p_n (\bigtriangleup) + cI) x_{\lambda} = \bigtriangleup p_n ( \bigtriangleup ) x_{\lambda} + cx_{\lambda} = \bigtriangleup(p_n(\lambda -1 ) x_{\lambda} ) + cx_{\lambda} \\
+= (p_n(\lambda -1))\bigtriangleup x_{\lambda} + cx_{\lambda} = (p_n(\lambda -1))(E -1) x_{\lambda}\\
+= (p_n (\lambda -1))(\lambda-1)x_{\lambda} + cx_{\lambda} = ((\lambda -1) p_n(\lambda -1) + c) x_{\lambda} \\
+= p_{n+1}(\lambda -1) x_{\lambda}
+\end{gather*}
+We have shown that the induction holds.
+
+To solve the difference equation $p(\bigtriangleup) = 0$ , we define $q(\lambda) = p(\lambda -1)$.
+Taylors series expansion gives us:
+\begin{gather*}
+q(\lambda) = \sum\limits_{i=0}^m \dfrac{q^{(i)}(1)}{i!}(\lambda -1)^{i}\\
+p(\mu) = \sum\limits_{i=0}^m \dfrac{q^{(i)}(1)}{i!} \mu^i \\
+q(E) = \sum\limits_{i=0}^m \dfrac{q^{(i)}(1)}{i!} \bigtriangleup ^i
+\end{gather*}
+Since $q^i(I) = q^i(1)I$, we get
+\begin{gather*}
+q(E) = \sum\limits_{i=0}^m \dfrac{q^{(i)}(1)}{i!} \bigtriangleup ^i = p(\bigtriangleup)
+\end{gather*}
+We can solve $p (\bigtriangleup) x =0$ by solving $ q(E)x=0$, which was already discussed in the lessons.
+\section{Exercise 16}
+We define $p(a) = a^n$ and $q(\lambda) = (\lambda -1 )$.
+\begin{gather*}
+q(\lambda) = (\lambda -1 ) ^ n = \sum\limits_{i=0}^n \dbinom{n}{i}\lambda ^i (-1)^{n-i} = (-1)^{n} \sum\limits_{i=0}^n \dbinom{n}{i}\lambda ^i (-1)^i \\ 
+= (-1)^n \left( \lambda ^0 - n\lambda + \frac{1}{2} n \left( n-1 \right) \lambda^2 - \frac{1}{3!} n \left( n-1 \right) \left(n-2 \right)\lambda^3 + \ldots + \left(-1 \right)^n \lambda^n \right)
+\end{gather*}
+Since $\bigtriangleup^n = p(\bigtriangleup) = q(E) $, we get:
+\begin{gather*}
+\bigtriangleup ^n = \left( E^0 - nE + \frac{1}{2} n(n-1) E^2 - \frac{1}{3!} n(n-1)(n-2)E^3 + \ldots + (-1)^n E^n \right)
+\end{gather*}

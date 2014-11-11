@@ -1,0 +1,311 @@
+\section{Exercise 1}
+We need to find the Schur decomposition of the given matrix $A$.
+\paragraph{a}
+\begin{gather*}
+A = \left( \begin{array}{cc}
+3 & 8 \\
+-2 & 3 
+\end{array} \right) \\
+P^{*}AP = T
+\end{gather*}
+We first compute the eigenvalue and vectors of the given matrix $A$.
+\begin{gather*}
+\det( \lambda I - A ) = 0 = (\lambda -3 ) ^2 + 16 = 0 \\
+= \lambda^2 - 6\lambda + 25 = 0 \\
+\dfrac{6 \rpm \sqrt{-64}}{2} \rightarrow \lambda_1 = 3 + 4i \ \lambda_2 = 3 - 4i
+\end{gather*}
+The following eigenvectors result from the eigenvalues:
+\begin{gather*}
+v_1 = \left( \begin{array}{c}
+-2i \\
+1
+\end{array} \right)
+v_2 = \left( \begin{array}{c}
+2 i \\
+1
+\end{array} \right)
+\end{gather*}
+We set $v_1 = w_1 = X_1$ and compute $w_2$ by using the given formula:
+\begin{gather*}
+w_{2}=X_{2}-\frac{w_{1}\cdot X_{2}}{\|w_{1}\|^{2}}w_{1} \\
+w_2 =
+\left( \begin{array}{c}
+2i \\
+1
+\end{array} \right)
+-
+\dfrac{
+\left( \begin{array}{c}
+-2i \\
+1
+\end{array} \right)
+\left( \begin{array}{c}
+2i\\
+1
+\end{array} \right)
+}{5} 
+\left( \begin{array}{c}
+-2i \\
+1
+\end{array} \right)
+= 
+\left( \begin{array}{c}
+2i \\
+1
+\end{array} \right)
++ \frac{3}{5}
+\left( \begin{array}{c}
+-2i \\
+1
+\end{array} \right)\\
+= 
+\left( \begin{array}{c}
+\frac{4}{5}i \\
+\frac{8}{5}
+\end{array} \right)\\
+\end{gather*}
+Further we compute the normed set of $\left[ \frac{w_1}{|w_1|}, \frac{w_2}{|w_2|} \right]$.
+\begin{gather*}
+\dfrac{w_1}{||w_1||} = \left( \begin{array}{c}
+\frac{-2i}{\sqrt{5}} \\
+\frac{1}{\sqrt{5}}
+\end{array} \right)
+, \dfrac{w_2}{||w_2||} = \left( \begin{array}{c}
+\frac{i}{\sqrt{5}}\\
+\frac{2}{\sqrt{5}}
+\end{array} \right)
+\end{gather*}
+The set represents our transformation vector $P$, which is :
+\begin{gather*}
+P = \frac{1}{\sqrt{5}}\left( \begin{array}{cc}
+-2i & i\\
+1 & 2
+\end{array} \right) \\
+T = P^{*} A P =  \left( \begin{array}{cc}
+3+4i & 6i\\
+0 & 3-4i \\
+\end{array} \right)
+\end{gather*}
+So we can decompose $A$ into $PTP^{*}$.
+
+\paragraph{b}
+\begin{gather*}
+A = \left( \begin{array}{cc}
+4 & 7 \\
+1 & 12 
+\end{array} \right) \\
+P^{*}AP = T
+\end{gather*}
+We first compute the eigenvalue and vectors of the given matrix $A$.
+\begin{gather*}
+\det( \lambda I - A ) = 0 = (\lambda - 4 ) (\lambda -12) -7 = 0 \\
+= \lambda^2 - 16\lambda + 41 = 0 \\
+8 \rpm \sqrt{23} \rightarrow \lambda_1 = 8 + \sqrt{23} \ \lambda_2 = 8 - \sqrt{23}
+\end{gather*}
+The following eigenvectors result from the eigenvalues:
+\begin{gather*}
+v_1 = \left( \begin{array}{c}
+-4+\sqrt{23}  \\
+1
+\end{array} \right)
+v_2 = \left( \begin{array}{c}
+-4-\sqrt{23} \\
+1
+\end{array} \right)
+\end{gather*}
+We set $v_1 = w_1 = X_1$ and compute $w_2$ by using the given formula:
+\begin{gather*}
+w_{2}=X_{2}-\frac{w_{1}\cdot X_{2}}{\|w_{1}\|^{2}}w_{1} \\
+w_2 =
+\left( \begin{array}{c}
+-4-\sqrt{23} \\
+1
+\end{array} \right)
+-
+\dfrac{
+\left( \begin{array}{c}
+-4+\sqrt{23} \\
+1
+\end{array} \right)
+\left( \begin{array}{c}
+-4-\sqrt{23}\\
+1
+\end{array} \right)
+}{1+ \left(\sqrt{23} -4 \right)^2 } 
+\left( \begin{array}{c}
+-4+\sqrt{23} \\
+1
+\end{array} \right)
+= \\
+\left( \begin{array}{c}
+-4-\sqrt{23} \\
+1
+\end{array} \right)
++ \frac{6}{1+ \left(\sqrt{23} -4 \right)^2}
+\left( \begin{array}{c}
+-4+\sqrt{23} \\
+1
+\end{array} \right)\\
+= 
+\text{ Something large }
+\end{gather*}
+Since Gram Schmitt gives us too large vectors here, we better use the simple:
+\begin{gather*}
+w_1 = \left( \begin{array}{c}
+-4+\sqrt{23}  \\
+1
+\end{array} \right)
+w_2 = \left( \begin{array}{c}
+1  \\
+4 - \sqrt{23}
+\end{array} \right)
+\end{gather*}
+
+
+Further we compute the normed set of $\left[ \frac{w_1}{|w_1|}, \frac{w_2}{|w_2|} \right]$.
+\begin{gather*}
+\dfrac{w_1}{||w_1||} = \left( \begin{array}{c}
+\frac{\sqrt(23) - 4}{\sqrt{1 + \left( \sqrt{23} -4 \right)^2}} \\
+\frac{1}{\sqrt{1 + \left( \sqrt{23} -4 \right)^2}}
+\end{array} \right)
+, \dfrac{w_2}{||w_2||} = \left( \begin{array}{c}
+\frac{1}{\sqrt{1 + \left( \sqrt{23} -4 \right)^2}}\\
+\frac{4-\sqrt{23}}{\sqrt{1 + \left( \sqrt{23} -4 \right)^2}}
+\end{array} \right)
+\end{gather*}
+The set represents our transformation vector $P$, which is :
+\begin{gather*}
+P = \frac{1}{\sqrt{1 + \left( \sqrt{23} -4 \right)^2}}\left( \begin{array}{cc}
+\sqrt{23} -4 & 1\\
+1 & 4-\sqrt{23}
+\end{array} \right) \\
+T = P^{*} A P =  \left( \begin{array}{cc}
+\frac{2 \left( 1247+243 \sqrt{23} \right)}{2401}  & -\frac{12 \left( 107+17 \sqrt{23} \right)}{2041} \\
+0 & \frac{2 \left( 465+29\sqrt{23} \right) }{2401} \\
+\end{array} \right)
+\end{gather*}
+So we can decompose $A$ into $PTP^{*}$.
+
+
+\section{Exercise 2}
+By applying Gershgorins Theorem to $D + E$ , we see that the spectrum of $D+E$ is the union of the Gershgorin disks of $D+E$, that is:
+\begin{gather*}
+z \in C : | z - a_{ii} | \leq \sum\limits_{j=1 ,j \neq i}^n |a_{ij}|
+\end{gather*}
+We get:
+\begin{gather*}
+D \cap E = \lambda - \lambda_i - a_{ii} \leq \sum\limits_{j=1 ,j \neq i}^n |a_{ij} + a_{ij}| = 
+2 \sum\limits_{j=1 ,j \neq i}^n | a_{ij}| 
+\end{gather*}
+Which means that within the intersection, all elements of $a$ are contained by $D \cap E$.
+\section{Exercise 4}
+We need to prove if $A$ is Hermitian then the deflation procedure will produce a Hermitian matrix.
+The procedure can be broken down into:
+\begin{gather*}
+V = B U \\
+B = \left( \begin{array}{cc}
+1 & 0\\
+0 & Q
+\end{array} \right)\\
+U = \text{ unitary } \\
+Q = \text{ unitary } \rightarrow B^* = B \\
+VAV^* = BUA(BU)^* = B (U A U^*) B^* \\
+U A U^* = (U A U^*)^* = UAU^* = \text{ diagonal } \\
+B (U A U^*) B^*  = B D B^* = (BDB^*)^* = BD^*B^* = V A V^*\\
+\end{gather*}
+As we can see $VAV^*$ is hermitian, since its conjugate transpose it itself again.
+\section{Exercise 12}
+We need to prove that if $(I-vv*) x = y$ then $<x,y>$ is real.
+We can show:
+\begin{gather*}
+(I-vv*) = Q \\
+Qx = y \\
+x^{*} Q x = x^{*} y = <x,y>
+\end{gather*}
+As we can see, the problem is only to show that $Q$ is real, so that $x^* Q x $ is real.
+We see that if $vv^*$ is real, it is obvious that $x,y$ and $Q$ are real.
+Assume that $vv^*$ is complex, so the matrix which result will be real in the diagonal and complex on the off diagonal elements.
+Since $vv^*$ is symmetric, the items $vv^{*}_{ij} = vv^{*}_{ji}$.
+We can moreover observe that Schurs decomposition only works if $ I - vv^*$ is unitary, meaning that $ || vv^* || = 0 $ or $|| vv^* ||^2 =2 $.
+The case of $|| vv^* ||^2 = 0$ is trivial, since the identity matrix is a non complex one, we can verify that $x^*Qx$ is real.
+Otherwise, if $ || vv^* ||^2 = 2$, we can decompose $Q$ into a diagonal form: 
+\begin{gather*}
+B = PQP^{-1} \\
+Q \sim B
+\end{gather*}
+Since $Q$ and $B$ are similar in that case, finding a suitable orthogonalization leads then to the following form:
+\begin{gather*}
+B = \left( \begin{array}{cccc}
+a_{11}& & &\\
+& a_{22}& &\\
+& & \ddots &\\
+& & & a_{nn}\\
+\end{array} \right)\\
+x*PQP^{-1}x = x*Bx = \\ \left(
+x_1, x_2, x_3, \hdots, x_n \right)
+\left( \begin{array}{cccc}
+a_{11}& & &\\
+& a_{22}& &\\
+& & \ddots &\\
+& & & a_{nn}\\
+\end{array} \right)
+\left( \begin{array}{c}
+\bar{x_1} \\
+\bar{x_2} \\
+\bar{x_3} \\ 
+\vdots \\
+\bar{x_n}
+\end{array} \right) =
+\\
+a_{11} x_1 \bar{x_1} + a_{22} x_2 \bar{x_2} + \ldots + a_{nn} x_n \bar{x_n}
+\end{gather*}
+As we can see the summations which will be proceeded cancel the complex terms out.
+\begin{equation}
+<x,y> = x^*Qx = \text{ real }
+\end{equation}
+
+\section{Exercise 14}
+First we show that $||QA||_2 = ||A||_2$
+\begin{gather*}
+|| QA ||_2 = (QA)^*(QA) = \\
+A^*Q^*QA = \\
+A^*A=
+||A||_2
+\end{gather*}
+Now we show that $||AQ||_2 = ||A||_2$
+\begin{gather*}
+||AQ||_2 = (AQ)^*(AQ) = \\
+Q^*A^*AQ = \\
+Q^* ||A||_2 Q = \\
+\text{ Since the norm is a number } \\
+||A||_2 Q^*Q = ||A||_2 I = ||A||_2 
+\end{gather*}
+
+\section{Exercise 29}
+\begin{equation*}
+A = \left( \begin{array}{ccc}
+6 &2 &1\\
+1&-5 &0 \\
+2&1 &4
+\end{array} \right)
+\end{equation*}
+The upper limit of the eigenvalues are bounded by Gershgorin's Theorem.
+\begin{gather*}
+\lambda \in C : | \lambda | \leq || A ||_{\infty}
+\end{gather*}
+We can calculate $||A||_{\infty}$:
+\begin{gather*}
+||A||_{\infty} = \max (6+2+1,1+|-5|+0, 2+1+4)= 9 \\ \rightarrow |\lambda| \leq 9
+\end{gather*}
+The lower bound can be found by using the following theorem:
+\begin{gather*}
+\lambda-a_{ii} \leq \sum\limits_i \neq j | a_{ij}|
+\end{gather*}
+We get the following equations:
+\begin{gather*}
+\lambda - a_{11} \leq 2+1 \\
+\lambda - a_{22} \leq 1 \\
+\lambda - a_{33} \leq 2+1 \\
+\therefore \lambda \geq 1
+\end{gather*}
+Which concludes that $1 \leq \lambda \leq 9 $.

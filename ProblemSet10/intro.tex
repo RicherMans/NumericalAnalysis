@@ -1,0 +1,122 @@
+\section{Exercise 3}
+In this exercise we need to prove that if $x_0 \in (a,b)$ and if $x_1,x_2 , \ldots ,x_n$ all converge to $x_0$, then $f[x_0,x_1,\ldots,x_n]$ will converge to $\frac{f^n(x_0)}{n!}$.
+
+Let $P$ be the Lagrange interpolation polynomial for $f$ at $x_0, ..., x_n$. Then it follows from the Newton form of $P$ that the highest term of $P$ is $f[x_0,\dots,x_n]x^n$.
+Let $g$ be the remainder of the interpolation, defined by $g = f - P$. Then $g$ has $n+1$ zeros: $x_0, ..., x_n$.
+We get:
+\begin{gather*}
+0 = g^{(n)}(\xi) = f^{(n)}(\xi) - f[x_0,\dots,x_n] n!\\
+f[x_0,\dots,x_n] = \frac{f^{(n)}(\xi)}{n!}.
+\end{gather*}
+Where $ \xi \in (\min\{x_0,\dots,x_n\},\max\{x_0,\dots,x_n\}) $. Since in our example all terms converge to $x_0$, the minimum and maximum of $\xi$ is both $x_0$, so we get:
+\begin{gather*}
+f[x_0,\dots,x_n] = \frac{f^{(n)}(x_0)}{n!}
+\end{gather*}
+%
+%The limit of the Newton polynomial if all nodes coincide is a Taylor polynomial, because the divided differences become derivatives, hence:
+%
+%\begin{gather*}
+%\lim_{(x_0,\dots,x_n)\to(z,\dots,z)} f[x_0] + f[x_0,x_1]\cdot(\xi-x_0) + \dots + f[x_0,\dots,x_n]\cdot(\xi-x_0)\cdot\dots\cdot(\xi-x_{n-1}) = \\
+%=  f(z) + f'(z)\cdot(\xi-z) + \dots + \frac{f^{(n)}(z)}{n!}\cdot(\xi-z)^n
+%\end{gather*}
+%So in our case we can write:
+%\begin{gather*}
+%\sum_{n = 0}^{\infty} \frac{f^{(n)}(x_0)}{n!}\left(  x-x_0 \right)^n
+%\end{gather*}
+
+\section{Exercise 4}
+Suppose $p(x)$ is the interpolation polynomial of at most degree $n$ for $f$, then
+\begin{gather*}
+p(x_i) = f(x_i), i = 0,1,\ldots,n
+\end{gather*}
+Let $q(x) = p(x) - f(x)$ be a polynomial of at most degree $n$. From above, we know that $q(x)$ has at least $n+1$ roots, hence:
+\begin{gather*}
+q(x) = 0 \Rightarrow p(x) =f(x) = 0 \Leftrightarrow p(x) = f(x)
+\end{gather*}
+Which means that $p(x)$ is a polynomial of degree $k$ . By divided difference, we have
+\begin{gather*}
+p(x) = \sum_{i=0}^{n} f [ x_0 , x_1 ,\ldots ,x_i] \prod_{j=0}^{i-1}(x - x_j)
+\end{gather*}
+Then $ f [ x_0 , x_1 ,\ldots ,x_i]$ is the coefficient of $x^n$. Hence $ f [ x_0 , x_1 ,\ldots ,x_i] = 0$ when $n > k$.
+\section{Exercise 5}
+As seen in this book, $p$ is a polynomial of degree at most $n$
+\begin{gather*}
+p(x) = \sum_{k=0}^n c_k q_k (x) = \sum_{k=0}^n f [ x_0 , \ldots,x_k ] \prod_{j=0}^{k-1} (x-x_j)
+\end{gather*}
+\section{Exercise 8}
+For any $f$, $p_n(x) = \sum_{i = 0}^n f(x_i) l_i(x) $ is the interpolation polynomial interpolating $f(x)$ at $x_0 , x_1 , \ldots ,x_n$.
+
+Let $Q_n(x) = \sum_{i = 0}^n f[x_0,x_1,\ldots,x_i] \prod_{j=0}^{i-1} (x - x_j)$ be the interpolation polynomial interpolation $f(x)$ at $x_0, x_1, \ldots ,x_n$ too.
+\begin{gather*}
+\therefore P_n(x) \equiv Q_n(x) \\
+\sum_{i=0}^n f(x_i) l_i(x) = \sum_{i=0 }^n f [ x_0 , x_1 ,\ldots x_i ] \prod_{j=0}^{i-1}(x-x_j)
+\end{gather*}
+\section{Exercise 9}
+Assuming having a divided difference in the following form:
+\begin{gather*}
+f[x_\nu,\ldots,x_{\nu+j}] := \frac{f[x_{\nu+1},\ldots , x_{\nu+j}] - f[x_\nu,\ldots , x_{\nu+j-1}]}{x_{\nu+j}-x_\nu}, \qquad \nu\in\{0,\ldots,k-j\},\ j\in\{1,\ldots,k\}.
+\end{gather*}
+We can expand the terms and show:
+\begin{align*}
+f[x_0] &= f(x_0) \\
+f[x_0,x_1] &= \frac{f(x_0)}{(x_0-x_1)} + \frac{f(x_1)}{(x_1-x_0)} \\
+f[x_0,x_1,x_2] &= \frac{f(x_0)}{(x_0-x_1)\cdot(x_0-x_2)} + \frac{f(x_1)}{(x_1-x_0)\cdot(x_1-x_2)} + \frac{f(x_2)}{(x_2-x_0)\cdot(x_2-x_1)} \\
+f[x_0,x_1,x_2,x_3] &= \frac{f(x_0)}{(x_0-x_1)\cdot(x_0-x_2)\cdot(x_0-x_3)} + \frac{f(x_1)}{(x_1-x_0)\cdot(x_1-x_2)\cdot(x_1-x_3)} \\
+&+ \frac{f(x_2)}{(x_2-x_0)\cdot(x_2-x_1)\cdot(x_2-x_3)} +\frac{f(x_3)}{(x_3-x_0)\cdot(x_3-x_1)\cdot(x_3-x_2)} \\
+& \quad \quad\quad \vdots \\
+f[x_0,\dots,x_n] &=
+\sum_{j=0}^{n} \frac{f(x_j)}{\prod_{k\in\{0,\dots,n\}\setminus\{j\}} (x_j-x_k)}
+\end{align*}
+Which shows that $f[x_0,\dots,x_n] = \sum_{i=0}^{n} f(x_i) \prod_{\substack{j=0\\j\neq i}} (x_i - x_j)^{-1} $ as required.
+\section{Exercise 12}
+Divided difference produces an interpolated polynom of degree $n$, with the following factors:
+\begin{gather*}
+\begin{matrix}
+x_0 & y_0 = f[y_0] &           &               & \\
+        &       & f[y_0,y_1] &               & \\
+x_1 & y_1 = f[y_1] &           & f[y_0,y_1,y_2] & \\
+        &       & f[y_1,y_2] &               & f[y_0,y_1,y_2,y_3]\\
+x_2 & y_2 = f[y_2] &           & f[y_1,y_2,y_3] & \\
+        &       & f[y_2,y_3] &               & \\
+x_3 & y_3 = f[y_3] &           &               & \\
+\end{matrix}
+\end{gather*}
+First of all we show that $m=n$ will lead the polynom being $1$. Assume having an $n = 3$ polynom, so we need at first 3 equations.
+\begin{gather*}
+f [ x_0 ,x_1 ] = \frac{f(x_1) - f(x_0)}{x_1 - x_0} \\
+f [ x_1 ,x_2 ] = \frac{f(x_2) - f(x_1)}{x_2 - x_1}\\
+f [ x_2 ,x_3 ] = \frac{f(x_3) - f(x_2)}{x_3 - x_2}
+\end{gather*}
+As we can easily see, in this first iteration step $n=1$, which we wrote out, if we set $m=n$, all equations in this $n$th step will result in being $1$.
+\begin{gather*}
+\text{ If } m = n \\
+f [ x_0 ,x_1 ] = 1 \\
+f [ x_1 ,x_2 ] = 1 \\
+f [ x_2 ,x_3 ] = 1\\
+\end{gather*}
+Since we calculate further on the divided differences, as soon as we calculated $m=n$ and calculate further on $n > m$, the difference in between the terms will be zero:
+\begin{gather*}
+f [ x_0,x_1,x_2 ] = \frac{f[ x_1,x_2] - f[x_0 ,x_1]}{x_0 - x_2} = \frac{1 - 1}{x_0 -x_2} = 0\\
+\end{gather*}
+So in the end, if we have $n$ recursions, with degree $m$, then at the $m$th recursion,all terms within this recursion will be $1$, leading to the next recursion and the following ones being $0$, as shown above.
+
+\section{Exercise 17}
+\begin{gather*}
+p(x) = 3 + \frac{1}{2}(x-1) + \frac{1}{3}(x-1)(x-\frac{3}{2}) - 2(x-1)(x-\frac{3}{2}) x
+\end{gather*}
+\section{Exercise 21}
+We need to show that $c_0$ is the value of the cubic interpolation at $x$:
+We simply expand:
+\begin{gather*}
+c_0 = \frac{(x_3 - x)b_0 + ((x-x_0)b_1}{x_3 -x_0}\\
+= \dfrac{(x_3 - x)\left( \frac{\left( x_2 -x \right) a_0 + \left( x -x_0 \right) a_1}{x_2 -x_0} \right)}{x_2 - x_0} + \dfrac{\left(x-x_0\right)\left( \frac{(x_3 -x)a_1 + (x-x_1) a_2}{x_2-x_1} \right) }{x_3-x_1}\\
+= \left( x_3-x \right)\left(\frac{ \left( \frac{ (x_2 -x) \left( \frac{(x_1 - x)y_0 + (x-x_0)y_1}{x_1-x_0} \right)}{x_2-x_0} \right)}{x_3-x_0} \right)
+\end{gather*}
+Not that we only expanded the left hand side, since we can easily show from here on that the central terms are only rewritten newton form polynomials:
+\begin{gather*}
+\frac{(x_1 - x) y_0  + (x-x_0)y_1}{x_1-x_0}\\
+= \frac{(x_1 - x) y_0}{x_1-x_0} + \frac{(x-x_0)y_1}{x_1 - x_0}\\
+= \frac{(x -x_1) y_0}{x_0-x_1} + \frac{(x-x_0)y_1}{x_0-x_1}\\
+= \sum_{j=0}^{k} y_j \ell_j(x) = L(x)
+\end{gather*}
+We have shown that the above polynomial will be a 3rd order Lagrange interpolation.

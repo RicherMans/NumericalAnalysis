@@ -1,0 +1,25 @@
+\section{Exercise 3}
+We need to obtain a formula for the polynomial $p$ of least degree:
+\begin{gather*}
+p(x_i) = y_i p'(x_i) = 0
+\end{gather*}
+We have a polynomial of degree $ \leq 2n+1$:
+\begin{gather*}
+p_{2n+1}(x)  = \sum_{i=0}^n y_i  H_i(x) + \sum_{i=0}^n p'(x_i)  \hat{H_i}(x) = \sum_{i=0}^n y_i H_i(x) 
+\end{gather*}
+
+\section{Exercise 6}
+We need only to verify that if $ p(x_i) = c_{i0} $, $p'(x_i) = c_{i1}$.
+\begin{gather*}
+p(x) = \sum_{i= 0}^n c_{i0} A_i(x) + \sum_{i=0}^n c_{i1} B_i(x) \\
+p(x) = \sum_{i= 0}^n c_{i0} A_i(x) + c_{i1} B_i(x) \\
+p(x) = \sum_{i=0 }^n c_{i0} \sum_{j=0}^n A_i(x_j) + c_{i1} \sum_{j=0}^n B_i(x_j) \\
+\end{gather*}
+So for the case that $p(x_i) = c_{i0}$, we need to remove the $B_i$ term in the summation, meaning we set $B_i(x_j) = 0$, since our constraint is $p(x_i) = c_{i0}$, $A_i(x_j)$ must be $1$ if $i = j$ :
+\begin{gather*}
+p(x) = \sum_{i=0 }^n c_{i0}A_i(x_j) = \sum_{i=0 }^n c_{i0} \delta_{ij} \\
+\end{gather*}
+For the other case that $p'(x_i) = c_{i1}$, we analogically need that $A_i$ is zero, so that $B'_i(x_j) = \delta_{ij}$
+\begin{gather*}
+p'(x) = \sum_{i=0 }^n c_{i1} \sum_{j=0}^n B'_i(x_j) = \sum_{i=0 }^n c_{i1}\delta_{ij}
+\end{gather*}

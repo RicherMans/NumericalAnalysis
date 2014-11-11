@@ -1,0 +1,290 @@
+
+\section{Exercise 1}
+%\usepackage{indentfirst}
+%\setlength{\parindent}{2em} 
+\paragraph{c}
+
+LU decomposition
+\begin{equation*}
+A = \left( \begin{array}{cccc}
+-1 & 1 & 0 & -3\\
+1 & 0 & 3 & 1\\
+0 & 1 & -1 & -1\\
+3 & 0 & 1 & 2\\
+\end{array} \right) 
+=
+\left( \begin{array}{cccc}
+-1 & 1 & 0 & 3\\
+-1 & 1 & 3 & -2\\
+0 & 1 & -1 & -1 \\
+-3 & 3 & 1 & -7\\
+\end{array} \right)
+=
+\left( \begin{array}{cccc}
+-1 & 1 & 0 & 3\\
+-1 & 1 & 3 & -2\\
+0 & 1 & -4 & 1 \\
+-3 & 3 & -8 & -1\\
+\end{array} \right)
+=
+\left( \begin{array}{cccc}
+-1 & 1 & 0 & 3\\
+-1 & 1 & 3 & -2\\
+0 & 1 & -4 & 1 \\
+-3 & 3 & 2 & -3\\
+\end{array} \right)
+\end{equation*}
+\begin{equation}
+L = \left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+-1 & 1 & 0 & 0\\
+0 & 1 & 1 & 0 \\
+-3 & 3 & 2 & 1\\
+\end{array} \right)
+U = \left( \begin{array}{cccc}
+-1 & 1 & 0 & 3\\
+0 & 1 & 3 & -2\\
+0 & 0 & -4 & 1 \\
+0 & 0 & 0 & -3\\
+\end{array} \right)
+\end{equation}
+
+When using scaled row pivoting:
+\begin{equation*}
+\left( \begin{array}{cccc}
+-1 & 1 & 0 & -3\\
+1 & 0 & 3 & 1\\
+0 & 1 & -1 & -1\\
+3 & 0 & 1 & 2\\
+\end{array} \right) , p = (1,2,3,4)
+\end{equation*}
+\begin{equation*}
+\left( \begin{array}{cccc}
+-\dfrac{1}{3} & 1 & \dfrac{1}{3} & -\dfrac{7}{3}\\
+\dfrac{1}{3} & 0 & \dfrac{8}{3} & \dfrac{1}{3}\\
+0 & 1 & -1 & -1\\
+3 & 0 & 1 & 2\\
+\end{array} \right) , p = (4,2,3,1)
+\end{equation*}
+\begin{equation*}
+\left( \begin{array}{cccc}
+-\dfrac{1}{3} & 1 & \dfrac{4}{3} & -\dfrac{4}{3}\\
+\dfrac{1}{3} & 0 & \dfrac{8}{3} & \dfrac{1}{3}\\
+0 & 1 & -1 & -1\\
+3 & 0 & 1 & 2\\
+\end{array} \right) , p = (4,3,2,1)
+\end{equation*}
+\begin{equation*}
+\left( \begin{array}{cccc}
+-\dfrac{1}{3} & 1 & \dfrac{1}{2} & -\dfrac{3}{2}\\
+\dfrac{1}{3} & 0 & \dfrac{8}{3} & \dfrac{1}{3}\\
+0 & 1 & -1 & -1\\
+3 & 0 & 1 & 2\\
+\end{array} \right) , p = (4,3,2,1)
+\end{equation*}
+\begin{equation*}
+L  = \left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+\dfrac{1}{3} & 0 & 1 & 0\\
+-\dfrac{1}{3} & 1 & \dfrac{1}{2} & 1\\
+\end{array} \right) 
+,
+U = \left( \begin{array}{cccc}
+3 & 0 & 1 & 2\\
+0 & 1 & -1 & -1\\
+0 & 0 & \dfrac{8}{3} & \dfrac{1}{3}\\
+0 & 0 & 0 & -\dfrac{3}{2}\\
+\end{array} \right)
+,
+P = 
+\left( \begin{array}{cccc}
+0 & 0 & 0 & 1\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0  & 0\\
+1 & 0 & 0 & 0\\
+\end{array} \right)
+\end{equation*}
+
+\section{Exercise 3}
+The Matrix $PA$ is a row lever permutation of $A$. The column $c$ of the $1$ entry in row $r$ within $P$, will swap the $r$th row with the $c$th one.
+The Matrix $AP$ will only switch elements in every row of $A$. The row order stays the same, yet the elements within the rows are interchanged.
+Since the matrix $P$ is linear independent, an inverse does exist. In this case, we can solve for $PP^{-1}=\mathbf{I}$. In this case $P^{-1}$ is equal to $P^{T}$, since the only possible combination to achieve the invertible is by multiplying every row with itself as column. This results in $P = P^{-1} = P^{T}$.
+The matrix $PAP^{-1}$ swaps the rows like as $PA$ and then swaps the elements within every row like $AP$.
+
+\section{Exercise 8}
+
+Assuming that the matrix $A$ is linearly independent. The forward elimination matrix $B$ then consists of the cofactors and values of $L$ and $U$ respectively. 
+\begin{equation*}
+B = \left( \begin{array}{cccc}
+b_{1,1} & \hdots & b_{1,n-1} & b_{1,n} \\
+\vdots & \ddots &  & \vdots\\ 
+b_{n-1,1} &  &  \ddots & \\
+b_{n,1} & \hdots & \hdots & b_{n,n}\\ 
+\end{array} \right)
+\end{equation*}
+Since the matrix $B$ is not ordered, it cannot be seen which item $b_{ij}$ is either a cofactor for $L$ or value for $U$.
+If we apply $PB$, we get rotate the matrix rows into correct order, so that all entries below $b_{ii}$ are cofactors of $L$ and all above (including $b_{ii}$) are the upper triangular values $U$.
+
+
+
+\section{Exercise 10}
+\begin{gather*}
+\left( \begin{array}{ccc}
+2 & -2 & -4 \\
+1 & 1 & -1 \\
+3 & 7 & 5 \\
+\end{array} \right)
+s = ( 4 , 1 , 7 )
+p = ( 1 , 2 , 3 )
+\\
+\left( \begin{array}{ccc}
+2 & -4 & -2 \\
+1 & 1 & -1 \\
+3 & 4 & 8 \\
+\end{array} \right)
+s = ( 1 , 4 ,7 )
+p = ( 2 , 1 , 3 ) \\
+\left( \begin{array}{ccc}
+2 & -4 & -2 \\
+1 & 1 & -1 \\
+3 & -1 & 6 \\
+\end{array} \right)
+s = ( 1 , 4 , 7 )
+p = ( 2 , 1 , 3 )\\
+L = \left( \begin{array}{ccc}
+1 & 0 & 0 \\
+2 & 1 & 0 \\
+3 & -1 & 1 \\
+\end{array} \right),
+U = \left( \begin{array}{ccc}
+1 & 1 & -1 \\
+0 & -4 & -2 \\
+0 & 0 & 6 \\
+\end{array} \right),
+P = \left( \begin{array}{ccc}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1 \\
+\end{array} \right)
+\end{gather*}
+
+\section{Exercise 12}
+
+To proof this inequality, one can use induction. Since the matrix is mirrored at the points $i=1$ and $i=n$, it is convenient to use either side to begin with.
+We want to show that $|d_{1}| > |a_{1}| + |c_{0}| $. Since per definition $ c_0 = 0$ and therefore we can need to show that $|d{1}| > |a_{1}|$.
+The elimination step can be viewed as:
+$d_{1}^{'} = d_{1} - c_0 \dfrac{a_1}{d_1} $
+In this case it can be clearly seen that $d_{1}^{'} > a_{1}$. In the next case, we will display the specific case of $n=2$.
+$d_{2}^{'} = d_{2} - c_1 \dfrac{a_2}{d_2} $
+That means we need to show that $|d_2| \geq |c_1 \dfrac{a_2}{d_2}|$. Given the inequality of $|d_i| \geq |c_{i-1} + a_i$, it is obvious that this inequality holds, so that the  produced by Gaussian elimination is still non-singular and the columnise dominance is preserved.
+
+\section{Exercise 17}
+\begin{gather*}
+\left( \begin{array}{ccc}
+-9 & 1 & 17 \\
+3 & 2 & -1 \\
+6 & 8 & 1 \\
+\end{array} \right) 
+p = ( 1,2,3 )
+\\
+\left( \begin{array}{ccc}
+-3 & 7 & 14 \\
+3 & 2 & -1 \\
+2 & 4 & 3 \\
+\end{array} \right)  p = ( 2 ,1 ,3 )
+\\
+\left( \begin{array}{ccc}
+-3 & \dfrac{7}{4} & \dfrac{35}{4} \\
+3 & 2 & -1 \\
+2 & 4 & 3 \\ 
+\end{array} \right) p = ( 2, 3, 1 ) \\
+P = \left( \begin{array}{ccc}
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+1 & 0 & 0 \\
+\end{array} \right) ,
+L = \left( \begin{array}{ccc}
+1 & 1 & 0 \\
+2 & 1 & 0 \\
+-3 & \dfrac{7}{4} & 1 \\
+\end{array} \right) , 
+U = \left( \begin{array}{ccc}
+3 & 2 & 1 \\
+0 & 4 & 3 \\
+0 & 0 & \dfrac{35}{4} \\
+\end{array} \right) 
+\end{gather*}
+
+Since this matrix is not diagonally dominant, because the first row has overall two elements which could be diagonally the maximum ( $-9 $ and $17$ ). This results in a false LU decomposition.
+
+\section{Exercise 30}
+\begin{gather*}
+A = 
+\left( \begin{array}{cccc}
+0 & -1 & 0 & 1\\
+0 & 1 & 0 & 1\\
+1 & 1 & 2  & 0\\
+2 & 0 & 1 & 0\\
+\end{array} \right) p = ( 1 , 2, 3, 4 )
+\\
+\left( \begin{array}{cccc}
+0 & -1 & 0 & 1\\
+0 & 1 & 0 & 1\\
+\dfrac{1}{2} & 1 & \dfrac{3}{2}  & 0\\
+2 & 0 & 1 & 0\\
+\end{array} \right) p = ( 4, 2, 3, 1 ) 
+\\
+\left( \begin{array}{cccc}
+0 & -1 & 0 & 2\\
+0 & 1 & 0 & 1\\
+\dfrac{1}{2} & 1 & \dfrac{3}{2}  & -1\\
+2 & 0 & 1 & 0\\
+\end{array} \right) p = ( 4, 2, 3, 1 ) 
+\\
+\left( \begin{array}{cccc}
+0 & -1 & 0 & 2\\
+0 & 1 & 0 & 1\\
+\dfrac{1}{2} & 1 & \dfrac{3}{2}  & -1\\
+2 & 0 & 1 & 0\\
+\end{array} \right) p = ( 4, 2, 3, 1 ) 
+\\
+P = 
+\left( \begin{array}{cccc}
+0 & 0 & 0 & 1\\
+0 & 1 & 0 & 0\\
+0 & 0 & 1  & 0\\
+1 & 0 & 0 & 0\\
+\end{array} \right) , 
+L =
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0\\
+\dfrac{1}{2} & 1 & 1 & 0\\
+0 & -1 & 0 & 1\\
+\end{array} \right) , 
+U = 
+\left( \begin{array}{cccc}
+2 & 0 & 1 & 0\\
+0 & 1 & 0 & 1\\
+0 & 0 & \dfrac{3}{2}  & -1\\
+0 & 0 & 0 & 2\\
+\end{array} \right) , 
+\end{gather*}
+The definition $\text{det}(AB) = \text{det}(A) \text{det}(B)$ can be used in conjunction to the definition of determinant of a triangular matrix : $\text{det}(T) = \sum\limits_i a_{ii}$.
+Since the lower triangular Matrix will have $\text{det}(L) = 1$, only the upper triangular matrix $U$ will be considered. 
+$\text{det}(A) = \underline{6}$
+
+\section{Exercise 41}
+To show that diagonal dominance will be preserved, I show that after eliminating element $a_{i,j}$, the equation $ |a_{i,i}| \geq \sum\limits_{j = 1 \\ j \neq i} |a_{i,j}| $ still holds. 
+After one iteration of gaussian elemination, the elements of $a_{i,j} , j > 1 $ are all zero. To show that the new obtained matrix is still diagonal dominant we use:
+\begin{gather*} 
+\sum\limits_{ i = 2 , i \neq j } | a_{i,j} | = \sum\limits_{ i = 2 , i \neq j } | a_{i,j} - \dfrac{a_{1,j}a_{i,1}}{a_{11}} \leq  \sum\limits_{ i = 2 , i \neq j } | a_{i,j} | + \sum\limits_{ i = 2 , i \neq j }  \dfrac{a_{1,j}a_{i,1}}{a_{11}}
+\end{gather*}
+Since A is diagonally dominant, $|a_{j,j}| | a_{1,1}| > |a{1,j}||a_{j,1}|$, which leads to following inequality:
+\begin{gather*}
+ \sum\limits_{ i = 2 , i \neq j } | a_{i,j} | + \sum\limits_{ i = 2 , i \neq j }  \dfrac{a_{1,j}a_{i,1}}{a_{11}} < |a_{j,j}| - | a_{1,j} | + \dfrac{|a_{1,j}|(|a_{1,1}| - |a_{j,1}|) }{|a_{1,1}|} = 
+|a_{j,j} - \dfrac{a_{j,1} a_{1,j}}{a_{1,1}}| = |a_{j,j} |
+\end{gather*}
+
+

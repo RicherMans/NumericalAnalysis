@@ -1,0 +1,107 @@
+\section{Exercise 1}
+%Bullshit mode engaged
+As we can see, the $n \times n$ upper hessenberg matrix, we can see that the spectra of $A$ is given as $\sigma(A)$, which are the eigenvalues of $A$. 
+The two submatrices at any given index $k$, have the following form:
+\begin{gather*}
+A_{ij}(1) = ( 1 \leq i, j < k )\\
+A_{ij}(2) = ( k < i , j \leq n)
+\end{gather*}
+The second matrix is always non existing as long $k < i$, which means if we choose $k = n$, we only generate the first matrix, which is in that case the:
+\begin{gather*}
+A_{ij}(1) =( 1 \leq i, j < n )\\
+A_{ij}(2) = ( n < i , j \leq n)
+\end{gather*}
+In the other extreme case where $k=1$, we get:
+\begin{gather*}
+A_{ij}(1) =( 1 \leq i, j < 1 )\\
+A_{ij}(2) = ( 1 < i , j \leq n)
+\end{gather*}
+Here we can see that the second matrix plays the only role and is the only submatrix, thus the $\sigma(A_{ij}(2))$ is equal to $\sigma(A)$.
+So we can see that in every case in between, the two sub matrices are only occupying the relevant diagonal terms plus the upper diagonal terms, so that for every $i,j$ the two spectra sum to to be the spectrum of $A$. $\sigma(A_{ij}(1)) + \sigma(A_{ij}(2)) = \sigma(A)$.
+%Bullshit mode off
+\section{Exercise 2}
+We need firstly to show that $A_{k+1} = Q^*_k A_k Q_k$.
+\begin{gather*}
+A_k = Q_kR_k\\
+A_{k+1} = R_kQ_k = ( Q_k^* Q_k ) (R_k Q_k) = Q^*_k A_k Q_k
+\end{gather*}
+Moreover we need to prove the specific form of $A^k$:
+\begin{gather*}
+Q_1^* A_1 Q_1 = A_2\\
+(Q_1^* A_1 Q_1 ) ^k = A_2^k\\
+Q_1^* A_1^k Q_1 = A_2^k\\
+A_1^k = A^k = Q_1 A_2^k Q_1^*\\
+= Q_1 ( A_2^{k-1} A_2 ) Q_1^*\\
+= Q_1 ( A_2^{k-1} (A_2 Q_1^*)\\
+= Q_1 A_2^{k-1} ( R_1 Q_1 Q_1^*)\\
+= Q_1 A_2^{k-1} ( R_1)
+\end{gather*}
+Now we apply the same procedure recursively for all $k$, so we get:
+\begin{gather*}
+(A_3)^{k-1} = (Q_2^* A_2 Q_2 )^{k-1}\\
+A_2^{k-1} = Q_2 A_3^{k-1} Q_2 \\
+\vdots \\
+Q_2 A_3^{k-2} R_2
+\end{gather*}
+If we insert all our solutions into each other, we get the final result as:
+\begin{gather*}
+(Q_1, \ldots ,Q_k) (R_k , \ldots ,R_1 ) =  A^k
+\end{gather*}
+\section{Exercise 6}
+We need to find the eigenvalues of A:
+\begin{gather*}
+\left( \begin{array}{ccc}
+-1 & -4 & 1 \\
+-1 & -2 & -5 \\
+5 & 4 & 3 
+\end{array} \right)
+\end{gather*}
+We compute the eigenvalues via the usual determinant formula: $\det( A - \lambda I )$:
+\begin{gather*}
+p_A(\lambda) = -\lambda^3 - 4 \lambda + 80 \\
+\lambda_1 = 4\\
+\lambda_2 = 4i -2\\
+\lambda_3 = -4i-2
+\end{gather*}
+
+\section{Exercise 7}
+Unitary similar means that $AP = PB$, where $P$ is unitary.
+As we already have seen in Exercise 2:
+\begin{gather*}
+A_k = Q_kR_k\\
+A_{k+1} = R_kQ_k = ( Q_k^* Q_k ) (R_k Q_k) = Q^*_k A_k Q_k
+\end{gather*}
+This already shows that $A_{k+1}$ and $A_k$ are similar. Since via definition $Q$ is unitary, the similarity extends to unitary similarity.
+
+\section{Exercise 11}
+Since the matrix $A$ is already upper triangular, even with it's sub matrices , we can easily compute the eigenvalues by only considering the diagonal terms, which are $A_{ii}$.
+We say that we have another matrix with the form of $A$, which we denote as $\Lambda$, which has the following properties:
+\begin{gather*}
+\Lambda = \left( \begin{array}{cccc}
+\Lambda_{11} & & & \\
+ & \Lambda_{22} & & \\
+ & & \ddots & \\
+ & & & \Lambda_{nn}
+\end{array} \right)\\
+\Lambda_{ii} = \left( \begin{array}{cc}
+\lambda & \\
+& \lambda
+\end{array} \right)
+\end{gather*}
+Then we can calculate the eigenvalues as usual:
+\begin{gather*}
+\det(\Lambda I - A) = \left( \begin{array}{cccc}
+\Lambda_{11} -A_{11} & -A_{12} & \hdots & -A_{1n} \\
+ & \Lambda_{22} -A_{22}  & \ddots& \vdots \\
+ & & \ddots & - A_{n-1,n} \\
+ & & &  \Lambda_{nn} - A_{nn}
+\end{array} \right)
+\end{gather*}
+Which is only again the calculation for each eigenvalue of $\Lambda_{ii} - A_{ii}$.
+For each of these matrices we use the following formula to calculate the eigenvalues:
+\begin{gather*}
+\lambda_1 = \frac{t}{2} + \sqrt{\frac{t^2}{4-d}}\\
+\lambda_2 = \frac{t}{2} - \sqrt{\frac{t^2}{4-d}}\\
+t = tr(A_{ii})
+\end{gather*}
+Finally we can see that we get at most $2n$ eigenvalues, since for every block, we get at most 2 eigenvalues.

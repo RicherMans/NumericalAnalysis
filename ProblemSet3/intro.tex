@@ -1,0 +1,317 @@
+\section{Exercise 1}
+We want to prove that $\rho ( I - Q^{-1} A ) < 1$. To do this, we will show that $\max \det( I - Q^{-1} A ) < 1$, which means that the eigenvalues $\max_{i} (\lambda_i) < 1 $. 
+First we use the assumptions of having a Jacobian method to set $Q=D$, where $D = \text{diag} (A)$ is diagonal. Moreover since $Q$ is diagonal, $Q^{-1}$ of element $q^{-1}_{ij} = \frac{1}{q_{ij}}$. Moreover we can see from the definition that $q_{ii} = \frac{1}{a_{ii}}$.
+
+From that on follows:
+\begin{gather*}
+\det(\lambda I - I - Q^{-1} A) = 0  \\
+= \det \left(
+\left( \begin{array}{ccc}
+\lambda_1 & 0 & 0 \\
+0 & \ddots & 0\\
+0 & 0 & \lambda_n
+\end{array} \right)
+-
+\left( \begin{array}{ccc}
+1 & 0 & 0 \\
+0 & \ddots & 0\\
+0 & 0 & 1
+\end{array} \right)
+-
+\left( \begin{array}{ccc}
+\dfrac{1}{a_{11}} & 0 & 0 \\
+0 & \ddots & 0\\
+0 & 0 & \dfrac{1}{a_{nn}}
+\end{array} \right)
+\left( \begin{array}{ccc}
+a_{11} & \hdots & a_{1n} \\
+\vdots & \ddots & \vdots\\
+a_{n1} & \hdots & a_{nn}
+\end{array} \right)
+\right) 
+= \\
+\left( \begin{array}{ccc}
+\lambda_1 - 1 & \dfrac{1}{a_{11}}a_{1k} & \dfrac{1}{a_{11}} a_{1n} \\
+\dfrac{1}{a_{kk}}a_{k1} & \ddots & \dfrac{1}{a_{kk}}a_{1n} \\
+\dfrac{1}{a_{nn}}a_{n1} & \dfrac{1}{a_{nn}}a_{kk} & \lambda_n - 1
+\end{array} \right) = B
+\end{gather*}
+When calculating the determinant:
+\begin{gather*}
+\det(A) = \sum_{i=1}^n (-1)^{i+j} a_{i,j} M_{i,j} = 0 \\
+\begin{cases}
+      a_{i,j} = 0 , & \text{if}\ \lambda_i \leq 1 \\
+      M_{i,j} = 0 & \text{if}\ \lambda_i \leq 1
+ \end{cases}
+\end{gather*}
+Since the resulting matrix is still diagonally dominant, because we only subtracted and added values onto the diagonal, it must be that our resulting matrix $B$, still is strictly diagonally dominant.
+That means that $|b_{ii}| \geq \sum_{j\neq i} |b_{ij}| \quad\text{for all } i$, so that follows : $\max_i (\lambda_i) < 1$, which means that $\rho ( I - Q^{-1} A ) < 1$.
+
+\section{Exercise 2}
+The Richardson Iteration is stated as : $ x^k = (I-A) x^{k-1} +b$. The Richardson iteration will be successful if $||I-A|| < 1 $.We have:
+\begin{gather*}
+I - A = 
+\left( \begin{array}{ccc}
+1 & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & 1\\
+\end{array}\right) 
+-
+\left( \begin{array}{ccc}
+1 & a_{1k} & a_{1n}\\
+a_{k1} & \ddots & \vdots \\
+a_{n1} & \hdots & 1\\
+\end{array}\right)
+= 
+\left( \begin{array}{ccc}
+0 & -a_{1k} & -a_{1n}\\
+-a_{k1} & \ddots & \vdots \\
+-a_{n1} & \hdots & 0\\
+\end{array}\right)
+\end{gather*}
+Since A is diagonally dominant, $\sum\limits_i |a_{ij}| < 1 $, after the subtraction of both matrices we get $0 - \sum\limits_i |a_{ij}| < 1 $, which only reverses the sign, but this fact doesn’t matter, since we use the absolute value, so that still $||I-A|| < 1$.
+\section{Exercise 5}
+We need to prove that $ ||x||^{'} = ||Sx||$ is a norm.
+\begin{enumerate}
+\item Prove that $||x||^{'} > 0$. Since it is assumed that $S$ is non-singular, we know that if we would modify $S$ to be in Echelon form, we would not get any row $r$, which has at it's $r$th column entry a zero value, therefore when we multiply $S$ with $x$, the resulting value would be $>0$.
+\item To show that $||\lambda S x || \rightarrow |\lambda| ||S x||$. Assuming having $\lambda >0$ we can easily see that this equation holds, since the matrix multiplication with a scalar is commutative.
+\item To show that the triangle inequality holds, we see that $|| x + y || = \sup{||S_1 x + S_2 y||} \leq \sup{|| S_1 x ||} + \sup{|| S_2 y||} $. It follows : $|| x+y || \leq ||x|| + ||y||$.
+\end{enumerate}
+
+\section{Exercise 7}
+
+We will prove that $||I-Q^{-1}A||_\infty < 1 $, which differently interpreted means $  \left \|  I-Q^{-1}A \right \| _\infty = \max \limits _{1 \leq i \leq m} \sum _{j=1} ^n | a_{ij} |$.
+$Q $ is a Gauss Seidel iteration variable. $Q = D-L$, $A = D - L - U$ and $ D - L = A + U$
+We expand:
+\begin{gather*}
+I - (A + U ) ^{-1} A  = \dfrac{(A+U)(I - (A + U ) ^{-1} A )}{A+U} = \dfrac{(A+U) - A}{A+U} = \dfrac{U}{A+U}
+\end{gather*}
+Now it is sufficient to show that $||U|| < ||A+U||$.
+\begin{gather*}
+A+U = \left( \begin{array}{cccc}
+a_{11} & 2 a_{1k} & 2 a_{1k+1} & 2 a_{1n} \\
+\vdots & \ddots & & 2 a_{kn}  \\
+\vdots & & \ddots & 2 a_{k+1n}\\
+a_{n1} & \hdots& \hdots & a_{nn} 
+\end{array} \right)
+\end{gather*}
+So it can be seen that the upper triangular elements in $A+U$ do double, whereas all other elements remain the same. This means that $\max_i \sum\limits_i |u_{ij}| < \max_i \sum\limits_i |ua_{ij}| $. Since $||U|| > 0 $ and therefore $||A+U|| > 0 \rightarrow ||I - Q^{-1}A|| < 1 $.
+\section{Exercise 8}
+We want to show that $\left(\lim_{k \to \infty}A^k = 0 \Rightarrow \rho(A) < 1\right)$.
+Moreover since $\rho$ is defined as : $\rho(A) = \max_i(|\lambda_i|)$, we need only to show that all eigenvalues of $\left(\lim_{k \to \infty} A^k \right) < 1 $. For any eigenvector $v$, we get via eigenvector definition:
+\begin{gather*}
+A^k v = \lambda^k v \\
+0 = \left(\lim_{k \to \infty}A^k \right) v = 
+\lim_{k \to \infty}A^k v = 
+\lim_{k \to \infty} \lambda^k v  = v \lim_{k \to \infty} \lambda^k
+\end{gather*}
+Per definition $v \neq 0$, it is obvious that $\lim_{k \to \infty} \lambda^k = 0$. This fact already implies $|\lambda| < 1$.
+
+\section{Exercise 15}
+Let $\lambda$ be an eigenvalue of $ I - Q^{-1}A$ and $x$ the corresponding eigenvectors with $||x||_{\infty} = 1$.
+We get:
+\begin{gather*}
+\left( Q -A \right) x = \lambda Q x  \\
+\lambda a_{ii}x_i = - \lambda \sum\limits_{j=1}^{i-1} a_{ij}x_{j} - \sum\limits_{j=i+1}^{n} a_{ij}x_j \\
+|x_i| = 1 \geq ||x_j|| \forall j\\
+|\lambda | |a_{ii}| \leq  |\lambda| \sum\limits_{j=1}^{i-1} |a_{ij}| + \sum\limits_{j=i+1}^{n} |a_{ij}| \\
+\text{knowing that } |a_{ii}| > \sum\limits_{j,j \neq i}^n |a_{ij}| = \sum\limits_{j=i+1}^{n} |a_{ij}| + \sum\limits_{j=1}^{i-1} |a_{ij}| \\
+|\lambda| |a_{ii}| - |\lambda| \sum\limits_{j=i+1}^{n} |a_{ij}| \leq \sum\limits_{j=1}^{i-1} |a_{ij}|  \\
+|\lambda| ( |a_{ii}| - \sum\limits_{j=1}^{i-1} |a_{ij}| ) \leq \sum\limits_{j=i+1}^{n} |a_{ij}|
+\\ 
+|\lambda| \leq r_i < 1 , \text{ where }\ 
+r_i = \dfrac{ \sum\limits_{j=i+1}^{n} |a_{ij}| }{ |a_{ii}| - \sum\limits_{j=1}^{i-1} |a_{ij}| }
+\end{gather*}
+This shows that $\rho(I-Q^{-1}A)$ is not greater than $r_i$.
+
+\section{Exercise 20}
+We need to prove that if $\rho(A) < 1$, $(I-A)^{-1}$ exists and $\sum\limits_k^\infty A^k = (I-A)^{-1}$.
+First we know that the formula to calculate the eigenvalues is $\det ( \lambda I - A) =0$. In other words, we seek for these $\lambda_i$s ,which will lead the term $\lambda I -A$ to become not invertible. Since we know that $\rho (A) < 1$, which means that all eigenvalues $\lambda_i$ are less than 1. We come to the conclusion, that $(\beta I - A)$ is invertible, if $\beta_i \neq \lambda_i$. In other words, if we choose $\beta$ as $I$, we can guarantee that $(I-A)$ is invertible, since all the necessary eigenvalues in the diagonal of $I$ need to be less than 1.
+
+Now we know that $(I-A)$ is invertible, so we can use this knowledge to modify the equations and get:
+\begin{equation}
+\label{eq:1}
+(I-A)^{-1} = \sum\limits_k^{\infty} A^k \\
+I =\sum\limits_k^{\infty} A^k (I-A) = (I-A) \sum\limits_k^{\infty} A^k \\
+\sum\limits_k^{\infty} \left( A^k- A^{k+1} \right)
+\end{equation}
+Since all the terms in the equation \ref{eq:1} cancel itself out, except the first and the last one, we get:
+\begin{gather*}
+I - A^{m+1} \text{ where }\ m \rightarrow \infty
+\end{gather*}
+Again by using our basic assumption that $\rho(A) < 1$, we show that the matrix norm is less than 1. For an eigenvector $v$, we have the following equation based on the eigenvalue extraction.
+\begin{align}
+\label{eq:2}
+|\lambda|^k\|v\| = \|\lambda^k \mathbf{v}\| = \|A^k v\| \leq \|A^k\|\cdot\|v\|
+\rightarrow
+|\lambda|^k\leq \|A^k\|
+\end{align}
+Since our maximum eigenvalue is less than 1, $|\lambda|^k$ is surely less than 1 and therefore $||A^k||$ is too.
+This fact leads to that $A^{m+1}$ in equation \ref{eq:2} will converge to zero, so that $I$ will be the result of the series.
+This proofs that $(I-A)$ is invertible and has a series expansion.
+
+\section{Exercise 30}
+All matrices follow a general approach, that they seek a splitting matrix $Q$, so that $Qx = (Q-A)x + b$ can iteratively be solved.
+This follows into the basic iteration equations.
+\begin{equation}
+\label{eq:3}
+Qx^k = (Q-A)x^{k-1} + b
+\end{equation}
+\begin{equation}
+\label{eq:4}
+x^k = G x^{k-1} + c
+\end{equation}
+
+\paragraph{Richardson}
+For the Richardson iteration, we choose $Q$ as $I$, so that we get:
+\begin{gather*}
+Q = I \\
+x^k = (I-A)x^{k-1} + b \\
+\mathcal{R} = (I - A) = G \\
+\end{gather*}
+The matrix R is the iteration matrix and uniquely also $G$.
+
+\paragraph{Jacobi}
+For the Jacobi iteration, we choose $Q$ as $D$, so that we get for $G$:
+\begin{gather*}
+Dx^k = (D-A)x^{k-1} + b \\
+Dx^k = (D-(D-L-U)) x^{k-1} + b \\
+Dx^k = (L+U) x^{k-1} + b\\
+x^k = D^{-1}(L+U) x^{k-1} + D^{-1} b \\
+\rightarrow G = D^{-1}(L+U)
+\end{gather*}
+And to show the iteration matrix:
+\begin{gather*}
+Dx^k = (D-A)x^{k-1} + b \\
+x^k = D^{-1}(D-A) x^{k-1} + D^{-1}b \\
+x^k = I - D^{-1}A x^{k-1} + D^{-1}b\\
+\rightarrow \mathcal{J} = I - D^{-1}A
+\end{gather*}
+
+\paragraph{Gauss Seidel}
+For the Gauss Seidel iteration, we choose $Q$ as $D-L$, so that we get:
+\begin{gather*}
+(D-L)x^k = (D-L-A) x^{k-1} + b \\
+(D-L)x^k = (D-L-(D-L-U)) x^{k-1} + b \\
+x^k = (D-L)^{-1}U x^{k-1} + (D-L)^{-1}b \\
+\rightarrow G = (D-L)^{-1}U
+\end{gather*}
+To show that the iteration matrix is correct:
+\begin{gather*}
+(D-L)x^k = (D-L-A) x^{k-1} + b \\
+x^k = (D-L)^{-1} (D-L-A) x^{k-1} + (D-L)^{-1}b\\
+x^k = (D-L)^{-1} (D-L) - (D-L)^{-1} A x^{k-1} + (D-L)^{-1}b\\
+x^k = I - (D-L)^{-1} A x^{k-1} + (D-L)^{-1}b \\
+\rightarrow \mathcal{G} = I - (D-C_L)^{-1} A , \text{where}\ L = C_L
+\end{gather*}
+
+\paragraph{Forward SOR}
+For the forward SOR method, we choose $Q$ as $\omega^{-1}(D-\omega C_L) $, so we get:
+\begin{gather*}
+\omega^{-1}(D-\omega C_L) x^{k} = (\omega^{-1}(D-\omega C_L) -A) x^{k-1} + b \\
+\omega^{-1} x^{k} = (D-\omega C_L)^{-1}(\omega^{-1}(D-\omega C_L) -A) x^{k-1} + (D-\omega C_L)^{-1} b \\
+\omega^{-1} x^{k} = \omega^{-1}(D-\omega C_L)^{-1}(D-\omega C_L) - (D-\omega C_L)^{-1}A x^{k-1} + ((D-\omega C_L))^{-1} b \\
+\omega^{-1} x^{k} = \omega^{-1}I - (D-\omega C_L)^{-1}A x^{k-1} + ((D-\omega C_L))^{-1} b \\
+x^{k} = \omega \omega^{-1}I - \omega (D-\omega C_L)^{-1}A x^{k-1} + \omega((D-\omega C_L))^{-1} b \\
+\rightarrow \mathcal{L_{\omega}} = I - \omega (D-\omega C_L)^{-1}A
+\end{gather*}
+To find out $G$, we get:
+\begin{gather*}
+D(x^{k} - x^{k-1}) =  \omega b - \omega D x^{k-1} + \omega L x^{k} + \omega U x^{k-1}\\
+(D - \omega L) x^{k} = Dx^{k-1} -  \omega D x^{k-1} + \omega U x^{k-1} + \omega b\\
+(D - \omega L) x^{k} = (D - \omega D + \omega U ) x^{k-1} + \omega b \\
+x^{k} =  (D - \omega L)^{-1} (D - \omega D + \omega U ) x^{k-1} + (D - \omega L)^{-1} \omega b \\
+\rightarrow G = (D - \omega L)^{-1} (D - \omega D + \omega U )
+\end{gather*}
+\paragraph{Backward SOR}
+Since Backward and Forward SOR are only a manipulation of $C_L = C_U$, replace the variables and it can be easily seen that the result is the same, except for this variable.
+
+\begin{gather*}
+G = (D - \omega C_R)^{-1} (D - \omega D + \omega U ) \\
+\mathcal{U_{\omega}} = I - \omega (D-\omega C_R)^{-1}A
+\end{gather*}
+
+\paragraph{SSOR}
+
+In SSOR, our splitting matrix $Q = (\omega (2 - \omega)^{-1} (D-\omega C_L)D^{-1}(D-\omega C_U)$
+\begin{gather*}
+Qx^k = (Q-A) x^{k-1} + b \\
+x^{k} = Q^{-1}(Q-A) x^{k-1} + Q^{-1}b\\
+x^k = (\omega (2 - \omega) (D-\omega C_L)^{-1} D(D-\omega C_U)^{-1} (\omega (2 - \omega)^{-1} (D-\omega C_L)D^{-1}(D-\omega C_U)-\\ (\omega (2 - \omega) (D-\omega C_L)^{-1} D(D-\omega C_U)^{-1} A x^{k-1} + Q^{-1}b \\
+x^k = I - (\omega (2 - \omega) (D-\omega C_L)^{-1} D(D-\omega C_U)^{-1} A x^{k-1} + Q^{-1} b \\
+\rightarrow \mathcal{S_{\omega}} =  I - (\omega (2 - \omega) (D-\omega C_L)^{-1} D(D-\omega C_U)^{-1} A
+\end{gather*}
+By expanding the terms $A$ and $C_U$, like in the SOR iteration, we get:
+%Totaler bullshit hier
+\begin{gather*}
+x^k =  I - (\omega (2 - \omega) (D-\omega C_L)^{-1} D(D-\omega C_U)^{-1} A x^{k-1}\\
+x^k = (D-\omega C_U)^{-1} (\omega C_L + ( 1- \omega)D ) (D-\omega C_L)^{-1}(\omega C_U + (1-\omega D) x^{k-1} \\
+\rightarrow G = (D-\omega C_U)^{-1} (\omega C_L + ( 1- \omega)D ) (D-\omega C_L)^{-1}(\omega C_U + (1-\omega D) x^{k-1} 
+\end{gather*}
+
+
+\section{Exercise 31}
+In this exercise we need to find the explicit form of $I-Q^{-1}A$.
+\begin{gather*}
+A = \left(\begin{array}{cccccc}
+2 & -1 &  & & & \\
+-1 & 2 & -1 &  & &  \\
+ & -1 & 2 & -1 & &  \\
+ & & \ddots & \ddots & \ddots & \\
+  & & &   -1 & 2 & -1\\
+ & & & &  -1 & 2
+\end{array} \right)
+Q = \left( \begin{array}{cccccc}
+2 & 0 &  & & & \\
+1 & 2 & 0 &  & &  \\
+ & 1 & 2 & 0 & &  \\
+ & & \ddots & \ddots & \ddots & \\
+  & & &   1 & 2 & 0\\
+ & & & &  1 & 2
+\end{array} \right) \\
+\end{gather*}
+Since $Q$ is lower triagonal, the determinant is easy to find. To get the adjugate matrix, we can show that it will be $2^{n-1}$ for every diagonal entry and will decrease in for each step farer away from the diagonal.
+\begin{gather*}
+Q^{-1} = \left( \begin{array}{cccccc}
+2^n & 0 &  & & & \\
+-2^{n-1} & 2^n & 0 &  & &  \\
+2^{n-2} & -2^{n-1} & 2^n & 0 & &  \\
+ & \ddots & \ddots & \ddots & \ddots & \\
+2^{n-4}  & -2^{n-3} & 2^{n-2} &   -2^{n-1} & 2^n & 0\\
+ & 2^{n-4} & -2^{n-3} & 2^{n-2} &  -2^{n-1} & 2^n
+\end{array} \right)
+\\
+Q^{-1} A = 
+\left( \begin{array}{cccccc}
+2^{n+1} + 2^{n-1} & -2^{n} &  & & & \\
+-2^n - 2^n & 2^{n+1} + 2^{n-1} & -2^{n} &  & &  \\
+2^{n-1} + 2^{n-1} & -2^n - 2^n & 2^{n+1} +2^{n-1} & -2^{n} & &  \\
+-2^{n-2} - 2^{n-2} & \ddots & \ddots & \ddots &  \\
+  &   &   -2^n - 2^n & 2^{n+1} +2^{n-1} & -2^{n}\\
+ &   -2^{n-2} - 2^{n-2} & 2^{n-1} + 2^{n-1} &  -2^n - 2^n & 2^{n+1} + 2^{n-1}
+\end{array} \right)
+\\
+I - Q^{-1}A = 
+\left( \begin{array}{cccccc}
+1 - 2^{n+1} + 2^{n-1} & 2^{n} &  & & & \\
+2^n + 2^n & 1 - 2^{n+1} + 2^{n-1} & 2^{n} &  & &  \\
+-2^{n-1} - 2^{n-1} & 2^n + 2^n & 1 - 2^{n+1} +2^{n-1} & 2^{n} & &  \\
+2^{n-2} + 2^{n-2} & \ddots & \ddots & \ddots &  \\
+  &   &   2^n + 2^n & 1 - 2^{n+1} +2^{n-1} &  2^{n}\\
+ &   2^{n-2} + 2^{n-2} & - 2^{n-1} - 2^{n-1} &  2^n + 2^n & 1- 2^{n+1} + 2^{n-1}
+\end{array} \right)
+\end{gather*}
+Which is a closed form solution.
+
+\section{Exercise 35}
+We want to show that $||x^k -x || = \dfrac{\delta}{1-\delta} || x^k - x^{k-1} ||$.
+We set $d(x_m,x_n) = ||x^k -x ||$, so that $x_n$ is a fixed point and $x_m$ is an iteration.
+Assuming $m > n$:
+\begin{gather*}
+d(x_m, x_n)  \leq d(x_m, x_{m-1}) + d(x_{m-1}, x_{m-2}) + \cdots + d(x_{n+1}, x_n)   \\
+ \leq q^{m-1}d(x_1, x_0) + q^{m-2}d(x_1, x_0) + \cdots + q^nd(x_1, x_0) \\
+ = q^n d(x_1, x_0) \sum_{k=0}^{m-n-1} q^k \\
+ \leq q^n d(x_1, x_0) \sum_{k=0}^\infty q^k \ \text{ since } q < 1\\
+ = q^n d(x_1, x_0) \left ( \frac{1}{1-q} \right ) 
+\end{gather*}
+If we choose $n$ as being equal to $m$, this equation simplifies to $||x^k -x || = \dfrac{\delta}{1-\delta} || x^k - x^{k-1} ||$, as required.

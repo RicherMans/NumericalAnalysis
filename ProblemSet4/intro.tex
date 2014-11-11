@@ -1,0 +1,104 @@
+\section{Exercise 2}
+We prove that $x_n = ( 1 + \dfrac{1}{n} ) ^n$ converges to $e$ in its limits.
+The proof assumes that some real function exists, $e^x$, which is monotonic, so that it's inverse $\log(x)$ also has a monotonic growth.
+
+\begin{gather*}
+\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = \lim_{n \to \infty} \left( e^{\log(1 + \frac{1}{n} )^n} \right) = e^{ \lim_{n \to \infty} \left( \log(1+\frac{1}{n} \right)^n } \\
+=  e^{ \lim_{n \to \infty} \left( n \log(1+\frac{1}{n} \right)} = e^{ \lim_{n \to \infty} \left( \dfrac{\log \left( 1 + \frac{1}{n} \right)}{\frac{1}{n}} \right) }  \\
+= e^{ \lim_{n \to \infty} \left( \dfrac{\frac{1}{1+\frac{1}{n}} \left( - \frac{1}{n^2} \right)}{ -\frac{1}{n^2}} \right) } = e^{ \lim_{n \to \infty} \left( \frac{1}{1+\frac{1}{n}} \right) } = e^1 = e < 3
+\end{gather*}
+We have shown that the series $(1+\frac{1}{n})$ converges to a value lesser than $3$.
+
+\section{Exercise 6}
+We need to show that $ x_n = O(\alpha_n)  \rightarrow c x_n = O (\alpha_n)$.
+
+We use the definition of big $O$, so we get:
+\begin{gather*}
+c x_n = O (\alpha_n) = \lim\limits_{n \to \infty} c \left| \dfrac{x_n}{\alpha_n}\right| < \infty\\ 
+= c \lim\limits_{n \to \infty} \left| \dfrac{x_n}{\alpha_n} \right| < \infty \\
+= \lim\limits_{n \to \infty} \left| \dfrac{x_n}{\alpha_n} \right| < \infty \\
+= x_n = O(\alpha_n)
+\end{gather*}
+It is shown that this equation holds, since constants in cases of infinite calculations cancel out.
+\section{Exercise 7}
+We want to show that from $x_n = O(\alpha_n)$ follows $\dfrac{x_n}{\log(n)} = o(\alpha_n)$.
+\begin{gather*}
+\frac{x_n}{ln(n)} = o(\alpha_n) = \lim_{n \to \infty} \left| \frac{x_n}{\log(n) \alpha_n} \right| \\
+=  \lim_{n \to \infty} \left| \frac{1}{\log(n) } \right| \left| \frac{x_n}{\alpha_n} \right| \\
+\lim_{n \to \infty} \left| \frac{1}{\log(n) } \right| \lim_{n \to \infty } \left|\frac{x_n}{\alpha_n} \right| \leq C \rightarrow O(\alpha_n)
+\end{gather*}
+Since the equation $  \frac{x_n}{\alpha_n} \leq C $ is bounded by $C$, yet converges to 0, if $n \to \infty$, we can see that the factor $\log (n)$ only increases its convergence.
+\section{Exercise 8}
+We need to find the best value for $k$ in the term $\cos(x) -1 + \frac{x^2}{2} = O(x^k) $. We use the Taylor series $ \sum_{n=0} ^ {\infty} \dfrac {f^{(n)}(a)}{n!} \, (x-a)^{n}$ here to estimate $\cos(x)$. We use for convenience $a=0$.
+\begin{gather*}
+\cos (x) -1 + \frac{x^2}{2} = O(x^k)\\
+1 - \frac{1}{2!} x^2 + \frac{1}{4!} x^4 - \frac{1}{6!} x^6 + \frac{1}{8!} x^8 \ldots - 1 +\frac{x^2}{2} \\
+= \frac{1}{4!} x^4 - \frac{1}{6!} x^6 + \frac{1}{8!} x^8 \ldots = O(x^k) \rightarrow k = 4
+\end{gather*}
+For the value of $k = $, we can see that, as long as $x \to 0$, the terms after the $x^4$ are always smaller than $C x^4$, so that $x^4$ is an upper bound.
+\section{Exercise 12}
+We show that for any $r > 0, x^r = O(x^r)$.
+\begin{gather*}
+\lim_{x \to \infty} \dfrac{x^r}{e^x} = \lim_{x \to \infty} \dfrac{r \log(x)}{x} = r \lim_{x \to \infty} \dfrac{\log(x)}{x}\\
+\left| \lim_{x \to \infty} \dfrac{\log(x)}{x} \right| \leq \frac{C}{r} 
+\end{gather*}
+Which shows that this equation holds for every $r>0$.
+\section{Exercise 13}
+We show that for any $r > 0, \log(x) = O(x^r)$.
+\begin{gather*}
+\lim_{x \to \infty} \left| \dfrac{\log(x)}{x^r} \right| \\
+\text{ we use Taylor series at a = 1 } \\
+\log(x) = - \frac{1}{x}(x-1) + \frac{1}{x^2}(x-1)^2 + \underbrace{\ldots}_{\to 0}\\
+\text{ If the denominator is always larger than the nominator, the fraction will converge to zero }\\
+\log(x) = -1 + \frac{1}{x} + 1 - \frac{2}{x} + \frac{1}{x^2} \\
+\lim_{x \to \infty} \underbrace{x^r}_{\to \infty} > \log(x) = \underbrace{-\frac{1}{x} + \frac{1}{x^2}}_{\to 0}
+\end{gather*}
+So the fraction $ \dfrac{\log(x)}{x^r} $ is bounded and will converge to zero.
+\section{Exercise 16}
+We need to determinate the best value for $k$ in the equation $\tan^{-1}(x) = x+ O(x^k)$, alternatively : $ O(x^k) = \tan^{-1}(x) -x$
+\begin{gather*}
+\tan^{-1}(x) = 1 - \frac{1}{3} x^3 + \frac{1}{5} x^5 - \frac{1}{7} x^7 \ldots \\
+\tan^{-1}(x) -x = 1 - \frac{1}{3} x^3 + \frac{1}{5} x^5 - \frac{1}{7} x^7 \ldots -x \\
+1 + x \left( -\frac{1}{3} x^2 + \frac{1}{5} x^5 - \frac{1}{7} x^7 \ldots - 1  \right) \\
+\end{gather*}
+As we can see the whole expression converges to one, if $x \to 0$. So we choose our $C$ so that $ 1 \leq C x^k $. If we choose $k = 0$, $C$ can be chosen $\geq 1$, so that the equation holds.
+\section{Exercise 22}
+In each $n \to \infty$.
+\paragraph{a}
+This assertion does not hold:
+\begin{gather*}
+\dfrac{n+1}{n^2} = o(\frac{1}{n}) \\
+\lim_{n \to \infty} \dfrac{\dfrac{n+1}{n^2}}{\dfrac{1}{n}} \hat{=} 0 \\
+= \lim_{n \to \infty} \dfrac{n^2 + n}{n^2} = \lim_{n \to \infty} 1+\frac{1}{n} = 1 \neq 0
+\end{gather*}
+The value of this equation is not bounded by 0, so it could be big O, but not a small o.
+\paragraph{b}
+This assertion does not hold either.
+\begin{gather*}
+\dfrac{n+1}{\sqrt[2]{n}} = o(1) \\
+\lim_{n \to \infty} \dfrac{n+1}{\sqrt[2]{n}} = \lim_{n \to \infty} \sqrt[2]{n} + 1 = \infty \neq 0
+\end{gather*}
+\paragraph{c}
+\begin{gather*}
+\frac{1}{ln(n)} = O (\frac{1}{n}) \\
+\lim_{n \to \infty} \dfrac{e^n}{n}  = \infty 
+\end{gather*}
+This term should approach any constant $L$, which is smaller than $\infty$, which it doesn't.
+\paragraph{d}
+This term holds the assertion
+\begin{gather*}
+\frac{1}{n \log n} = o(\frac{1}{n}) \\
+\lim_{n \to \infty} \dfrac{n}{n \log(n)} =  \lim_{n \to \infty}  \dfrac{1}{\log n} = \lim_{n \to \infty} \dfrac{e}{n} = 0 
+\end{gather*}
+This term holds.
+\paragraph{e}
+This assertion does not hold
+\begin{gather*}
+\frac{e^n}{n^5} = O(\frac{1}{n})\\
+\lim_{n \to \infty} \frac{n e^n}{n^5} = \lim_{n \to \infty} \frac{e^n}{n^4} \\
+= \lim_{n \to \infty} \frac{n}{4 \log (n)} \\
+\text{ Using L'hospital } \\
+= \lim_{n \to \infty} \frac{1}{\frac{1}{n}}\\
+= \lim_{n \to \infty} n = \infty
+\end{gather*}
+As it can be seen this assertion does not hold either.

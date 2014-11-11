@@ -1,0 +1,35 @@
+\section{Exercise 2}
+We need to show that if $||B-A|| < {||A^{-1}||^{-1}}$ exists,then $B$ is also invertible.
+\begin{gather*}
+||B-A|| < \frac{1}{||A^{-1}||} \leq \frac{1}{||A||^{-1}} = ||A||
+\end{gather*}
+From here on follows that:
+\begin{gather*}
+||B-A|| < ||A|| \\
+A^{-1} \text{ exists } \rightarrow ||A|| < 1 \rightarrow ||B-A|| < 1 \rightarrow ||B||^{-1} \text{ exists}
+\end{gather*}
+We have shown that if $A$ is invertible, $B$ is too.
+
+\section{Exercise 3}
+Assuming that $||A|| < 1$, we want to prove that ${||I-A||}^{-1} \geq \dfrac{1}{1+||A||}$.
+First it needs to be shown that ${||I-A||}^{-1}$ is invertible. If it is singular, then a vector exists $||x|| = 1$, so that $(I-A)x=0$.
+It follows that:
+\begin{gather*}
+||x|| = 1 = ||Ax|| \leq ||A|| ||x|| = ||A||
+\end{gather*}
+So it can be seen, that if $||x|| = 1$, $(I-A)$ is invertible.
+Furthermore we use the Neumann series to show that the series converges towards $\dfrac{1}{1+||A||}$.
+\begin{gather*}
+\label{eq:1}
+(I-A) \sum\limits_k^p A^k = \sum\limits_k^p ( A^k - A^{k+1} ) = (I-A^{p+1}) \rightarrow I
+\end{gather*}
+It should be noted that in \ref{eq:1}, the elements within the sum cancel out, except in the case $k=0$ and $k=p$, so that in an limit case, where $p \rightarrow \infty$, $A^{p+1} \rightarrow 0$.
+Since $||A^{p+1} || \leq ||A||^{p+1}$, we get:
+\begin{gather*}
+\label{eq:2}
+||(I-A)^{-1}|| \leq \sum\limits_{k=0}^{\infty} ||A^k|| \leq \sum\limits_{k=0}^{\infty} ||A||^k = 
+ \frac{1}{1-||A||}
+\end{gather*}
+As it can be seen, our assumption was wrong. 
+
+\section{Exercise 4}

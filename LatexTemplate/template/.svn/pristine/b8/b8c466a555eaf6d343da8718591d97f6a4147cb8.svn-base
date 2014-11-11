@@ -1,0 +1,79 @@
+\documentclass{article}
+
+\usepackage{a4wide}
+\usepackage{float}
+\usepackage{graphicx, latexsym, longtable}
+\usepackage{epsfig, color, psfrag}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{multirow}
+\usepackage{fancyvrb}
+\usepackage{subfig}
+\usepackage{CJKutf8}
+\captionsetup[subfigure]{labelformat=empty}
+\usepackage[unicode]{hyperref}
+\usepackage{indentfirst}
+\usepackage{listings}
+\lstset{language=Matlab}
+\lstset{extendedchars=false}
+%%%%%%%%%%%%%%%%%%%%%%for abstract%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{abstractbook}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%for adding code%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+%    backgroundcolor=\color{backcolour},  
+	numberstyle=\ttfamily, 
+	frame=single,
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=6pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=codestyle}
+%%%%%%%%%%%%%%package added by you%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+\bibliographystyle{plain}
+
+%\begin{titlepage}
+\hrule
+
+\vspace{0.4in}
+\begin{center}
+{\bf 技术简报Template \\}
+\bigskip
+Some one\\
+\smallskip
+\date
+\bigskip
+
+E-mail: {\tt someone@sth.com}\\
+
+\end{center}
+
+\newcommand{\ppath}{.}
+
+\input{\ppath/tech}
+\bibliography{\ppath/ref}
+\newpage
+\end{CJK}
+\end{document}
+
